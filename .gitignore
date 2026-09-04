@@ -11,3 +11,6 @@ call_bailian_agent.py
 # 表格检查过程产生的中间文件
 *.inspect.ndjson
 ~$*
+
+# 真实客户批量验证结果（含模型响应与调用标识）
+outputs/validation_runs/

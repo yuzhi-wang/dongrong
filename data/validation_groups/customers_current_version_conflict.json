@@ -1,0 +1,2278 @@
+{
+  "schema_version": "1.0",
+  "group": "current_version_conflict",
+  "group_name": "与现有版本冲突",
+  "source": {
+    "customers": "outputs/01a0610a-1444-7f01-bb33-d1c13c6ce446/脱敏_面试专用_仅保留产品库产品.xlsx",
+    "products": "docs/产品库-使用版.xlsx",
+    "source_customer_count": 192
+  },
+  "classification_policy": {
+    "precedence": [
+      "current_version_conflict",
+      "insufficient_information",
+      "validatable"
+    ],
+    "current_version_conflict": [
+      "历史放款产品不在当前产品库，或银行无法通过别名映射到当前产品",
+      "已知年龄超出当前产品年龄范围",
+      "已知信用卡账户数超过当前产品上限",
+      "已知90天以上逾期与当前产品禁入规则冲突",
+      "历史放款额度或利率超出当前产品版本范围"
+    ],
+    "insufficient_information": [
+      "年龄缺失",
+      "需求额度缺失",
+      "产品类型或推荐优先维度缺失",
+      "单位类型缺失",
+      "工资与公积金基数同时缺失",
+      "在职时长与社保时长同时缺失",
+      "原始信用卡账户数缺失",
+      "近1月征信查询次数缺失或不可解析"
+    ],
+    "note": "空值不按0或false处理；存在已知版本冲突时优先归入冲突组，即使该客户同时缺少其他字段。"
+  },
+  "customer_count": 18,
+  "customers": [
+    {
+      "customer_id": "C012",
+      "report_time": "2026-06-11T00:00:00",
+      "input": {
+        "city": null,
+        "age": 46,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "机关事业单位",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 12000,
+          "max": 20000
+        },
+        "salary_bank": null,
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 18674,
+        "provident_fund_base_range": {
+          "min": 18674,
+          "max": 18674
+        },
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 0,
+        "house_area_sqm": null,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 1,
+        "loan_inquiries_1m_range": {
+          "min": 1,
+          "max": 1
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 27,
+        "active_credit_card_accounts": 9,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 97,
+        "active_other_loan_accounts": 18,
+        "mortgage_accounts": 3,
+        "active_mortgage_accounts": 1,
+        "requested_amount": null,
+        "requested_amount_range": "61-100万",
+        "requested_amount_bounds": {
+          "min": 610000,
+          "max": 1000000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "bank_name": "南银法巴消费金融",
+        "product_name": "诚易贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.03,
+        "repayment_method": "等额本息",
+        "source_bank_name": "南银法巴消费金融"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_below_current_minimum",
+            "field": "annual_rate",
+            "observed": 0.03,
+            "product_rule": 0.035,
+            "message": "历史放款利率低于当前产品最低利率"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C053",
+      "report_time": "2026-06-30T14:14:07",
+      "input": {
+        "city": null,
+        "age": 36,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "机关事业单位",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 12000,
+          "max": 20000
+        },
+        "salary_bank": "中国建设银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 21516.67,
+        "provident_fund_base_range": {
+          "min": 21516.67,
+          "max": 21516.67
+        },
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 2,
+        "house_area_sqm": 118.06,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 1,
+        "loan_inquiries_1m_range": {
+          "min": 1,
+          "max": 1
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 18,
+        "active_credit_card_accounts": 3,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 253,
+        "active_other_loan_accounts": 6,
+        "mortgage_accounts": 1,
+        "active_mortgage_accounts": 1,
+        "requested_amount": null,
+        "requested_amount_range": "61-100万",
+        "requested_amount_bounds": {
+          "min": 610000,
+          "max": 1000000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 450000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 18,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C058",
+      "report_time": "2026-07-06T00:00:00",
+      "input": {
+        "city": null,
+        "age": 30,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "其他",
+        "education": "高中或以下",
+        "company_type": "央企国企",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 8000,
+          "max": 12000
+        },
+        "salary_bank": "中国银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 10590,
+        "provident_fund_base_range": {
+          "min": 10590,
+          "max": 10590
+        },
+        "has_house": false,
+        "house_status": "无房产",
+        "house_count": 0,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 16,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": 1,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 118,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": 1,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "31-60万",
+        "requested_amount_bounds": {
+          "min": 310000,
+          "max": 600000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 360000,
+        "annual_rate": 0.032,
+        "repayment_method": "等额本息",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 16,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [
+          {
+            "code": "current_house_status_vs_historical_mortgage",
+            "mortgage_accounts": 1
+          }
+        ],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C059",
+      "report_time": "2026-07-06T00:00:00",
+      "input": {
+        "city": null,
+        "age": 57,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "大专",
+        "company_type": "普通企业",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 8000,
+          "max": 12000
+        },
+        "salary_bank": "中国工商银行",
+        "income_payment_type": null,
+        "social_security_months": null,
+        "social_security_tenure_range": null,
+        "social_security_gap_last_year": null,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": null,
+        "provident_fund_base_range": null,
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 1,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 1,
+        "loan_inquiries_1m_range": {
+          "min": 1,
+          "max": 1
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 17,
+        "active_credit_card_accounts": 16,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": null,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": 1,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "3天内",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 280000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 17,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": null,
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C074",
+      "report_time": "2026-07-08T00:00:00",
+      "input": {
+        "city": null,
+        "age": 53,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "高中或以下",
+        "company_type": "央企国企",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 5000,
+          "max": 8000
+        },
+        "salary_bank": null,
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": null,
+        "provident_fund_base_range": null,
+        "has_house": true,
+        "house_status": "全款房",
+        "house_count": 1,
+        "house_area_sqm": 74.61,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 7,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 6,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": "信用",
+        "priority": [
+          "利率"
+        ],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 260000,
+        "annual_rate": 0.035,
+        "repayment_method": "等额本息",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_above_current_maximum",
+            "field": "annual_rate",
+            "observed": 0.035,
+            "product_rule": 0.034,
+            "message": "历史放款利率高于当前产品最高利率"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": null,
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C081",
+      "report_time": "2026-07-10T00:00:00",
+      "input": {
+        "city": null,
+        "age": 50,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "普通企业",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 20000,
+          "max": null
+        },
+        "salary_bank": "中国银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 34000,
+        "provident_fund_base_range": {
+          "min": 34000,
+          "max": 34000
+        },
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 2,
+        "house_area_sqm": 70.25,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 2,
+        "loan_inquiries_1m_range": {
+          "min": 2,
+          "max": 2
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 16,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 13,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": 3,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "31-60万",
+        "requested_amount_bounds": {
+          "min": 310000,
+          "max": 600000
+        },
+        "product_type": "信用",
+        "priority": [
+          "利率"
+        ],
+        "funding_urgency": "3天内",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 730000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 16,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C085",
+      "report_time": "2026-07-10T00:00:00",
+      "input": {
+        "city": null,
+        "age": 47,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "大专",
+        "company_type": "央企国企",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 8000,
+          "max": 12000
+        },
+        "salary_bank": "中国建设银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 15608,
+        "provident_fund_base_range": {
+          "min": 15608,
+          "max": 15608
+        },
+        "has_house": true,
+        "house_status": "全款房",
+        "house_count": 1,
+        "house_area_sqm": 138.48,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 10,
+        "active_credit_card_accounts": 8,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 47,
+        "active_other_loan_accounts": 2,
+        "mortgage_accounts": 1,
+        "active_mortgage_accounts": 1,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": null,
+        "priority": [],
+        "funding_urgency": "半个月以内",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": null,
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 430000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 10,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [
+          {
+            "code": "missing_product_type",
+            "fields": [
+              "product_type"
+            ],
+            "message": "缺少产品偏好类型"
+          },
+          {
+            "code": "missing_priority",
+            "fields": [
+              "priority"
+            ],
+            "message": "缺少推荐优先维度"
+          }
+        ],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C094",
+      "report_time": "2026-07-13T00:00:00",
+      "input": {
+        "city": null,
+        "age": 32,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "普通企业",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 5000,
+          "max": 8000
+        },
+        "salary_bank": "中国农业银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 7800,
+        "provident_fund_base_range": {
+          "min": 7800,
+          "max": 7800
+        },
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 1,
+        "house_area_sqm": 103.85,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 17,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 19,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": null,
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 600000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 17,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C133",
+      "report_time": "2026-07-22T00:00:00",
+      "input": {
+        "city": null,
+        "age": 42,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "高中或以下",
+        "company_type": "普通企业",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 5000,
+          "max": 8000
+        },
+        "salary_bank": "中国建设银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 4952,
+        "provident_fund_base_range": {
+          "min": 4952,
+          "max": 4952
+        },
+        "has_house": false,
+        "house_status": "无房产",
+        "house_count": 0,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 1,
+        "loan_inquiries_1m_range": {
+          "min": 1,
+          "max": 1
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 5,
+        "active_credit_card_accounts": 5,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 12,
+        "active_other_loan_accounts": 7,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": "信用",
+        "priority": [
+          "期限"
+        ],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "PSBC_CREDIT_YXD_SZ",
+        "bank_name": "中国邮政储蓄银行",
+        "product_name": "邮享贷",
+        "approved_amount": 140000,
+        "annual_rate": 0.0625,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国邮政储蓄银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_above_current_maximum",
+            "field": "annual_rate",
+            "observed": 0.0625,
+            "product_rule": 0.06,
+            "message": "历史放款利率高于当前产品最高利率"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C135",
+      "report_time": "2026-07-22T00:00:00",
+      "input": {
+        "city": null,
+        "age": 46,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "机关事业单位",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 8000,
+          "max": 12000
+        },
+        "salary_bank": "中国工商银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 17927,
+        "provident_fund_base_range": {
+          "min": 17927,
+          "max": 17927
+        },
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 1,
+        "house_area_sqm": 107.61,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 1,
+        "loan_inquiries_1m_range": {
+          "min": 1,
+          "max": 1
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 56,
+        "active_credit_card_accounts": 8,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 110,
+        "active_other_loan_accounts": 19,
+        "mortgage_accounts": 6,
+        "active_mortgage_accounts": 1,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "半个月以内",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 662500,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 56,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C142",
+      "report_time": "2026-07-22T00:00:00",
+      "input": {
+        "city": null,
+        "age": 34,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "机关事业单位",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 5000,
+          "max": 8000
+        },
+        "salary_bank": "中国建设银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 12192,
+        "provident_fund_base_range": {
+          "min": 12192,
+          "max": 12192
+        },
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 1,
+        "house_area_sqm": 108.3,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 3,
+        "loan_inquiries_1m_range": {
+          "min": 3,
+          "max": 3
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 10,
+        "active_credit_card_accounts": 5,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 117,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": 2,
+        "active_mortgage_accounts": 2,
+        "requested_amount": null,
+        "requested_amount_range": "61-100万",
+        "requested_amount_bounds": {
+          "min": 610000,
+          "max": 1000000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "3天内",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 150000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 10,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C170",
+      "report_time": "2026-07-28T00:00:00",
+      "input": {
+        "city": null,
+        "age": null,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": null,
+        "education": null,
+        "company_type": null,
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 8000,
+          "max": 12000
+        },
+        "salary_bank": "中国银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": null,
+        "provident_fund_months": null,
+        "provident_fund_base": null,
+        "provident_fund_base_range": null,
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 1,
+        "house_area_sqm": 119.65,
+        "has_car": true,
+        "car_status": "全款车",
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": null,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": null,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "31-60万",
+        "requested_amount_bounds": {
+          "min": 310000,
+          "max": 600000
+        },
+        "product_type": "信用",
+        "priority": [],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": null,
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "bank_name": "中国银行",
+        "product_name": "中银e贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_below_current_minimum",
+            "field": "annual_rate",
+            "observed": 0.03,
+            "product_rule": 0.031,
+            "message": "历史放款利率低于当前产品最低利率"
+          }
+        ],
+        "insufficient_reasons": [
+          {
+            "code": "missing_age",
+            "fields": [
+              "age"
+            ],
+            "message": "缺少有效年龄"
+          },
+          {
+            "code": "missing_priority",
+            "fields": [
+              "priority"
+            ],
+            "message": "缺少推荐优先维度"
+          },
+          {
+            "code": "missing_company_type",
+            "fields": [
+              "company_type"
+            ],
+            "message": "缺少单位类型"
+          },
+          {
+            "code": "missing_raw_credit_card_count",
+            "fields": [
+              "credit_card_accounts"
+            ],
+            "message": "原始信用卡账户数缺失，未用派生0代替"
+          }
+        ],
+        "warnings": [],
+        "source_trace": {
+          "age": null,
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": null,
+          "credit_card_accounts": null
+        }
+      }
+    },
+    {
+      "customer_id": "C183",
+      "report_time": "2026-07-28T00:00:00",
+      "input": {
+        "city": null,
+        "age": null,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": null,
+        "education": "本科",
+        "company_type": "普通企业",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 12000,
+          "max": 20000
+        },
+        "salary_bank": null,
+        "income_payment_type": null,
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 6000,
+        "provident_fund_base_range": {
+          "min": 6000,
+          "max": 6000
+        },
+        "has_house": null,
+        "house_status": null,
+        "house_count": 0,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": false,
+        "loan_inquiries_1m": 4,
+        "loan_inquiries_1m_range": {
+          "min": 4,
+          "max": 4
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 1,
+        "active_credit_card_accounts": 1,
+        "credit_card_overdue_accounts": 0,
+        "credit_card_90d_overdue_accounts": 0,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 14,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "0-10万",
+        "requested_amount_bounds": {
+          "min": 0,
+          "max": 100000
+        },
+        "product_type": null,
+        "priority": [],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": null,
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "bank_name": "南银法巴消费金融",
+        "product_name": "诚易贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.19,
+        "repayment_method": "等额本息",
+        "source_bank_name": "南银法巴消费金融"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_above_current_maximum",
+            "field": "annual_rate",
+            "observed": 0.19,
+            "product_rule": 0.188,
+            "message": "历史放款利率高于当前产品最高利率"
+          }
+        ],
+        "insufficient_reasons": [
+          {
+            "code": "missing_age",
+            "fields": [
+              "age"
+            ],
+            "message": "缺少有效年龄"
+          },
+          {
+            "code": "missing_product_type",
+            "fields": [
+              "product_type"
+            ],
+            "message": "缺少产品偏好类型"
+          },
+          {
+            "code": "missing_priority",
+            "fields": [
+              "priority"
+            ],
+            "message": "缺少推荐优先维度"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "invalid_credit_report_age",
+            "value": 899
+          }
+        ],
+        "source_trace": {
+          "age": null,
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C185",
+      "report_time": "2026-07-28T00:00:00",
+      "input": {
+        "city": null,
+        "age": null,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "央企国企",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 8000,
+          "max": 12000
+        },
+        "salary_bank": "青岛银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 12139.86,
+        "provident_fund_base_range": {
+          "min": 12139.86,
+          "max": 12139.86
+        },
+        "has_house": null,
+        "house_status": null,
+        "house_count": 0,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": true,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 1,
+        "loan_inquiries_1m_range": {
+          "min": 1,
+          "max": 1
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": null,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": null,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "bank_name": "南银法巴消费金融",
+        "product_name": "诚易贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.03,
+        "repayment_method": "等额本息",
+        "source_bank_name": "南银法巴消费金融"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_below_current_minimum",
+            "field": "annual_rate",
+            "observed": 0.03,
+            "product_rule": 0.035,
+            "message": "历史放款利率低于当前产品最低利率"
+          }
+        ],
+        "insufficient_reasons": [
+          {
+            "code": "missing_age",
+            "fields": [
+              "age"
+            ],
+            "message": "缺少有效年龄"
+          },
+          {
+            "code": "missing_raw_credit_card_count",
+            "fields": [
+              "credit_card_accounts"
+            ],
+            "message": "原始信用卡账户数缺失，未用派生0代替"
+          }
+        ],
+        "warnings": [],
+        "source_trace": {
+          "age": null,
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": null
+        }
+      }
+    },
+    {
+      "customer_id": "C192",
+      "report_time": "2026-07-31T00:00:00",
+      "input": {
+        "city": null,
+        "age": 62,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "高中或以下",
+        "company_type": "央企国企",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 8000,
+          "max": 12000
+        },
+        "salary_bank": null,
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 14634,
+        "provident_fund_base_range": {
+          "min": 14634,
+          "max": 14634
+        },
+        "has_house": false,
+        "house_status": "无房产",
+        "house_count": 0,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": true,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 1,
+        "loan_inquiries_1m_range": {
+          "min": 1,
+          "max": 1
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 16,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 96,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": 200000,
+        "requested_amount_range": "20万元",
+        "requested_amount_bounds": {
+          "min": 200000,
+          "max": 200000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": null,
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": null,
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "NJCB_CREDIT_NHED_SZ",
+        "bank_name": "南京银行",
+        "product_name": "你好e贷",
+        "approved_amount": 156000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "南京银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "age_above_current_maximum",
+            "field": "age",
+            "observed": 62,
+            "product_rule": 59,
+            "message": "年龄高于当前产品最高年龄"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_新需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C196",
+      "report_time": "2026-07-31T00:00:00",
+      "input": {
+        "city": null,
+        "age": 38,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "未婚",
+        "education": "大专",
+        "company_type": "央企国企",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 12000,
+          "max": 20000
+        },
+        "salary_bank": null,
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": 10800,
+        "provident_fund_base_range": {
+          "min": 10800,
+          "max": 10800
+        },
+        "has_house": true,
+        "house_status": "按揭房",
+        "house_count": 1,
+        "house_area_sqm": 80,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 4,
+        "active_credit_card_accounts": 1,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 51,
+        "active_other_loan_accounts": 3,
+        "mortgage_accounts": 1,
+        "active_mortgage_accounts": 1,
+        "requested_amount": 200000,
+        "requested_amount_range": "20万元",
+        "requested_amount_bounds": {
+          "min": 200000,
+          "max": 200000
+        },
+        "product_type": "信用",
+        "priority": [
+          "放款速度"
+        ],
+        "funding_urgency": null,
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "bank_name": "中国银行",
+        "product_name": "中银e贷",
+        "approved_amount": 170000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_below_current_minimum",
+            "field": "annual_rate",
+            "observed": 0.03,
+            "product_rule": 0.031,
+            "message": "历史放款利率低于当前产品最低利率"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_新需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    },
+    {
+      "customer_id": "C207",
+      "report_time": "2026-07-31T00:00:00",
+      "input": {
+        "city": null,
+        "age": null,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": null,
+        "education": null,
+        "company_type": null,
+        "months_employed": null,
+        "employment_tenure_range": null,
+        "monthly_income": null,
+        "monthly_income_range": null,
+        "salary_bank": null,
+        "income_payment_type": null,
+        "social_security_months": null,
+        "social_security_tenure_range": null,
+        "social_security_gap_last_year": null,
+        "has_provident_fund": null,
+        "provident_fund_months": null,
+        "provident_fund_base": null,
+        "provident_fund_base_range": null,
+        "has_house": false,
+        "house_status": "无房产",
+        "house_count": 0,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": null,
+        "active_credit_card_accounts": null,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": null,
+        "active_other_loan_accounts": null,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "11-30万",
+        "requested_amount_bounds": {
+          "min": 110000,
+          "max": 300000
+        },
+        "product_type": null,
+        "priority": [],
+        "funding_urgency": "立刻",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": null,
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CMB_CREDIT_SDD_SZ",
+        "bank_name": "招商银行",
+        "product_name": "闪电贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.07,
+        "repayment_method": "先息后本",
+        "source_bank_name": "招商银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "approved_rate_above_current_maximum",
+            "field": "annual_rate",
+            "observed": 0.07,
+            "product_rule": 0.068,
+            "message": "历史放款利率高于当前产品最高利率"
+          }
+        ],
+        "insufficient_reasons": [
+          {
+            "code": "missing_age",
+            "fields": [
+              "age"
+            ],
+            "message": "缺少有效年龄"
+          },
+          {
+            "code": "missing_product_type",
+            "fields": [
+              "product_type"
+            ],
+            "message": "缺少产品偏好类型"
+          },
+          {
+            "code": "missing_priority",
+            "fields": [
+              "priority"
+            ],
+            "message": "缺少推荐优先维度"
+          },
+          {
+            "code": "missing_company_type",
+            "fields": [
+              "company_type"
+            ],
+            "message": "缺少单位类型"
+          },
+          {
+            "code": "missing_income_and_fund_base",
+            "fields": [
+              "monthly_income_range",
+              "provident_fund_base_range"
+            ],
+            "message": "工资与公积金基数同时缺失"
+          },
+          {
+            "code": "missing_employment_and_social_tenure",
+            "fields": [
+              "employment_tenure_range",
+              "social_security_tenure_range"
+            ],
+            "message": "在职时长与社保时长同时缺失"
+          },
+          {
+            "code": "missing_raw_credit_card_count",
+            "fields": [
+              "credit_card_accounts"
+            ],
+            "message": "原始信用卡账户数缺失，未用派生0代替"
+          }
+        ],
+        "warnings": [
+          {
+            "code": "invalid_credit_report_age",
+            "value": 0
+          }
+        ],
+        "source_trace": {
+          "age": null,
+          "requested_amount": "manual_需求额度",
+          "monthly_income": null,
+          "provident_fund_base": null,
+          "credit_card_accounts": null
+        }
+      }
+    },
+    {
+      "customer_id": "C218",
+      "report_time": "2026-07-31T00:00:00",
+      "input": {
+        "city": null,
+        "age": 45,
+        "customer_type": null,
+        "identity": "个人",
+        "marital_status": "已婚",
+        "education": "本科",
+        "company_type": "机关事业单位",
+        "months_employed": "3年以上",
+        "employment_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "monthly_income": null,
+        "monthly_income_range": {
+          "min": 12000,
+          "max": 20000
+        },
+        "salary_bank": "徽商银行",
+        "income_payment_type": "打卡工资（缴个税）",
+        "social_security_months": "3年以上",
+        "social_security_tenure_range": {
+          "min_months": 36,
+          "max_months": null
+        },
+        "social_security_gap_last_year": false,
+        "has_provident_fund": true,
+        "provident_fund_months": null,
+        "provident_fund_base": null,
+        "provident_fund_base_range": {
+          "min": 12000,
+          "max": 20000
+        },
+        "has_house": true,
+        "house_status": "全款房",
+        "house_count": 1,
+        "house_area_sqm": null,
+        "has_car": null,
+        "car_status": null,
+        "current_overdue": null,
+        "overdue_in_last_5_years": null,
+        "overdue_count_5y": null,
+        "has_90_day_overdue": null,
+        "loan_inquiries_1m": 0,
+        "loan_inquiries_1m_range": {
+          "min": 0,
+          "max": 0
+        },
+        "loan_inquiries_2m": null,
+        "loan_inquiries_3m": null,
+        "loan_inquiries_4m": null,
+        "loan_inquiries_6m": null,
+        "loan_inquiries_12m": null,
+        "total_non_mortgage_car_debt": null,
+        "lending_institution_count": null,
+        "online_loan_count": null,
+        "business_loan_count": null,
+        "non_bank_institution_count": null,
+        "credit_card_accounts": 16,
+        "active_credit_card_accounts": 14,
+        "credit_card_overdue_accounts": null,
+        "credit_card_90d_overdue_accounts": null,
+        "credit_card_utilization": null,
+        "other_loan_accounts": 9,
+        "active_other_loan_accounts": 9,
+        "mortgage_accounts": null,
+        "active_mortgage_accounts": null,
+        "requested_amount": null,
+        "requested_amount_range": "31-60万",
+        "requested_amount_bounds": {
+          "min": 310000,
+          "max": 600000
+        },
+        "product_type": "信用",
+        "priority": [
+          "额度"
+        ],
+        "funding_urgency": "3天内",
+        "max_acceptable_annual_rate": null,
+        "preferred_repayment_method": null,
+        "repayment_source": "薪资收入",
+        "loan_purpose": null,
+        "public_records": null
+      },
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "data_quality": {
+        "group": "current_version_conflict",
+        "conflict_reasons": [
+          {
+            "code": "credit_card_count_above_current_limit",
+            "field": "credit_card_accounts",
+            "observed": 16,
+            "product_rule": 8,
+            "message": "信用卡账户数超过当前产品上限"
+          }
+        ],
+        "insufficient_reasons": [],
+        "warnings": [],
+        "source_trace": {
+          "age": "upload_个人征信简版_age",
+          "requested_amount": "manual_需求额度",
+          "monthly_income": "manual_月打卡工资",
+          "provident_fund_base": "upload_公积金_公积金缴存基数",
+          "credit_card_accounts": "upload_个人征信简版_信贷记录_信用卡_账户数"
+        }
+      }
+    }
+  ]
+}
