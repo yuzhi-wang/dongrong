@@ -1,30 +1,33 @@
-"""用历史真实用例评估“本地硬过滤 + Qwen + 历史先验重排”流程。
+"""用真实用例评估本地硬过滤与 Qwen Top3 推荐。
 
 默认从可正常验证组中按真实产品分层抽取 12 条，每款产品至少一条。
 模型调用前只使用客户 ``input``；调用完成后才用 ``validation_target``
-计算重排前后 Top1、Recall@3 和硬规则误删率。历史先验重排在模型
-返回后执行，并从当前真实产品的历史计数中扣除1条，避免直接标签泄漏。
+模型只返回 Top3，计算 Top1、Recall@3 和硬规则误删率。
 """
 
 from __future__ import annotations
 
 import argparse
 import json
+import math
 import random
 import sys
 import time
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from dashscope_client import call_responses, extract_output_text
+from api_key import load_api_key
+from dashscope_client import MAX_RATE_LIMIT_RETRIES, RequestPacer, call_recommendation, extract_output_text
+from report_comparison import (
+    DEFAULT_PROMPT_BASELINE_PATH, compare_prompt_reports, compare_reports,
+    print_comparison, validate_report,
+)
 from hard_filter import filter_products
-from history_rerank import load_history_prior, rerank_recommendation
-from main import (
+from recommendation import (
     API_BASE_URL,
-    API_KEY,
-    HISTORY_PRIOR_PATH,
     MODEL,
     PRODUCTS_PATH,
     SYSTEM_PROMPT_PATH,
@@ -32,6 +35,7 @@ from main import (
     build_user_prompt,
     load_json,
     parse_recommendation,
+    preserve_model_recommendation,
 )
 
 
@@ -113,6 +117,7 @@ def choose_cases(
 ) -> list[dict[str, Any]]:
     """按显式客户、全量或分层抽样三种模式选择用例。"""
     if customer_ids:
+        customer_ids = list(dict.fromkeys(customer_ids))
         by_id = {case["customer_id"]: case for case in cases}
         missing = [customer_id for customer_id in customer_ids if customer_id not in by_id]
         if missing:
@@ -138,15 +143,6 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
     model_exercised = bool(completed or failed)
     top1_hits = sum(bool(item.get("top1_hit")) for item in completed)
     top3_hits = sum(bool(item.get("top3_hit")) for item in completed)
-    pre_rerank_top1_hits = sum(
-        bool(item.get("pre_rerank_top1_hit", item.get("top1_hit")))
-        for item in completed
-    )
-    pre_rerank_top3_hits = sum(
-        bool(item.get("pre_rerank_top3_hit", item.get("top3_hit")))
-        for item in completed
-    )
-
     usage_fields = ("input_tokens", "output_tokens", "total_tokens")
     total_usage = {
         field: sum(
@@ -169,14 +165,6 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         group_model_exercised = bool(group_completed or group_failed)
         group_top1 = sum(bool(item.get("top1_hit")) for item in group_completed)
         group_top3 = sum(bool(item.get("top3_hit")) for item in group_completed)
-        group_pre_rerank_top1 = sum(
-            bool(item.get("pre_rerank_top1_hit", item.get("top1_hit")))
-            for item in group_completed
-        )
-        group_pre_rerank_top3 = sum(
-            bool(item.get("pre_rerank_top3_hit", item.get("top3_hit")))
-            for item in group_completed
-        )
         by_product.append({
             "product_id": product_id,
             "product_name": group[0]["validation_target"].get("product_name"),
@@ -185,8 +173,6 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
                 bool(item.get("target_retained")) for item in group
             ),
             "completed_count": len(group_completed),
-            "pre_rerank_top1_hits": group_pre_rerank_top1,
-            "pre_rerank_top3_hits": group_pre_rerank_top3,
             "top1_hits": group_top1,
             "top3_hits": group_top3,
             "end_to_end_top1_accuracy": (
@@ -208,16 +194,6 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
             "completed_count": len(completed),
             "failed_count": len(failed),
             "not_exercised_count": len(not_exercised),
-            "pre_rerank_top1_hits": pre_rerank_top1_hits,
-            "pre_rerank_top3_hits": pre_rerank_top3_hits,
-            "pre_rerank_top1_accuracy_on_completed": _safe_rate(
-                pre_rerank_top1_hits,
-                len(completed),
-            ),
-            "pre_rerank_recall_at_3_on_completed": _safe_rate(
-                pre_rerank_top3_hits,
-                len(completed),
-            ),
             "top1_hits": top1_hits,
             "top3_hits": top3_hits,
             "top1_accuracy_on_completed": _safe_rate(top1_hits, len(completed)),
@@ -246,7 +222,15 @@ def save_report(report: dict[str, Any], path: Path) -> None:
         json.dumps(report, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
-    temporary_path.replace(path)
+    # Windows 文件扫描或索引可能短暂占用目标文件；保留原子替换并有限重试。
+    for attempt in range(5):
+        try:
+            temporary_path.replace(path)
+            break
+        except PermissionError as exc:
+            if getattr(exc, "winerror", None) not in {5, 32, 33} or attempt == 4:
+                raise
+            time.sleep(0.1 * (attempt + 1))
 
 
 def _customer_payload(case: dict[str, Any]) -> dict[str, Any]:
@@ -258,9 +242,10 @@ def evaluate_case(
     case: dict[str, Any],
     catalog: dict[str, Any],
     system_prompt: str,
-    history_prior: dict[str, Any],
     *,
     dry_run: bool,
+    api_key: str | None = None,
+    before_request=None,
 ) -> dict[str, Any]:
     """评估一个客户；真实标签只在模型返回后用于比对。"""
     customer_id = case["customer_id"]
@@ -303,14 +288,17 @@ def evaluate_case(
 
     started_at = time.perf_counter()
     try:
-        response = call_responses(
+        response = call_recommendation(
             api_base_url=API_BASE_URL,
-            api_key=API_KEY,
+            api_key=api_key or load_api_key(),
             model=MODEL,
             instructions=system_prompt,
             input_text=build_user_prompt(hard_filter_result, customer),
             timeout_seconds=TIMEOUT_SECONDS,
+            before_request=before_request,
         )
+        result["_raw_response"] = response
+        result["response"] = {key: response.get(key) for key in ("id", "model", "status", "api_format", "usage")}
         model_recommendation = parse_recommendation(
             extract_output_text(response),
             expected_product_ids=candidate_ids,
@@ -320,19 +308,8 @@ def evaluate_case(
                 "模型返回的 customer_id 与当前测试客户不一致："
                 f"{model_recommendation.get('customer_id')!r}"
             )
-        pre_rerank_top3_ids = [
-            item.get("product_id")
-            for item in model_recommendation.get("top3", [])
-        ]
-        recommendation = rerank_recommendation(
-            model_recommendation,
-            history_prior,
-            {
-                product["产品唯一ID"]: product
-                for product in hard_filter_result["candidates"]
-            },
-            exclude_product_id=target_product_id,
-        )
+        products_by_id = {product["产品唯一ID"]: product for product in hard_filter_result["candidates"]}
+        recommendation = preserve_model_recommendation(model_recommendation, products_by_id)
         top3_ids = [item.get("product_id") for item in recommendation.get("top3", [])]
         if len(top3_ids) != len(set(top3_ids)):
             raise RuntimeError("模型返回的 Top3 含重复产品")
@@ -345,11 +322,6 @@ def evaluate_case(
     result.update({
         "status": "completed",
         "elapsed_seconds": round(time.perf_counter() - started_at, 3),
-        "pre_rerank_top1_hit": (
-            bool(pre_rerank_top3_ids)
-            and pre_rerank_top3_ids[0] == target_product_id
-        ),
-        "pre_rerank_top3_hit": target_product_id in pre_rerank_top3_ids,
         "top1_hit": bool(top3_ids) and top3_ids[0] == target_product_id,
         "top3_hit": target_product_id in top3_ids,
         "target_rank": (
@@ -361,6 +333,7 @@ def evaluate_case(
             "id": response.get("id"),
             "model": response.get("model"),
             "status": response.get("status"),
+            "api_format": response.get("api_format"),
             "usage": response.get("usage") or {},
         },
         "recommendation": recommendation,
@@ -368,17 +341,20 @@ def evaluate_case(
     return result
 
 
-def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
+def parse_args(argv: list[str] | None = None, *, default_all=False,
+               default_workers=1, default_baseline=None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="默认并行回测全部可验证客户，并比较历史全量基线。" if default_all else __doc__
+    )
+    selection = parser.add_mutually_exclusive_group()
+    selection.add_argument(
         "--sample-size",
         type=int,
-        default=DEFAULT_SAMPLE_SIZE,
-        help=f"分层样本数（默认 {DEFAULT_SAMPLE_SIZE}）",
+        help="只回测指定数量的分层样本" if default_all else f"分层样本数（默认 {DEFAULT_SAMPLE_SIZE}）",
     )
     parser.add_argument("--seed", type=int, default=DEFAULT_SEED, help="抽样种子")
-    parser.add_argument("--all", action="store_true", help="测试全部可验证用例")
-    parser.add_argument(
+    selection.add_argument("--all", action="store_true", help="测试全部可验证用例")
+    selection.add_argument(
         "--customer-id",
         action="append",
         default=[],
@@ -386,14 +362,32 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--dry-run", action="store_true", help="只运行抽样和硬过滤")
     parser.add_argument("--output", type=Path, help="指定结果 JSON 路径")
-    return parser.parse_args(argv)
+    parser.add_argument("--workers", type=int, default=default_workers, help="并行工作线程数")
+    parser.add_argument("--request-interval", type=float, default=0.25, help="全局请求启动间隔，单位秒，默认 0.25")
+    comparison = parser.add_mutually_exclusive_group()
+    comparison.add_argument("--baseline", type=Path, default=default_baseline, help="历史基线报告路径")
+    comparison.add_argument("--no-compare", action="store_true", help="不生成历史比较报告")
+    args = parser.parse_args(argv)
+    if args.workers < 1:
+        parser.error("--workers 必须大于 0")
+    if not math.isfinite(args.request_interval) or args.request_interval < 0:
+        parser.error("--request-interval 必须是非负有限数值")
+    if args.sample_size is not None and args.sample_size < 1:
+        parser.error("--sample-size 必须大于 0")
+    if default_all and args.sample_size is None and not args.customer_id:
+        args.all = True
+    args.sample_size = args.sample_size or DEFAULT_SAMPLE_SIZE
+    if args.no_compare:
+        args.baseline = None
+    return args
 
 
-def main(argv: list[str] | None = None) -> int:
-    args = parse_args(argv)
+def main(argv: list[str] | None = None, *, default_all=False,
+         default_workers=1, default_baseline=None) -> int:
+    args = parse_args(argv, default_all=default_all, default_workers=default_workers,
+                      default_baseline=default_baseline)
     try:
-        if not args.dry_run and not API_KEY:
-            raise ValueError("请先设置环境变量 DASHSCOPE_API_KEY")
+        api_key = None if args.dry_run else load_api_key()
         if not API_BASE_URL.startswith(("http://", "https://")):
             raise ValueError("DASHSCOPE_API_BASE_URL 必须是 HTTP(S) 地址")
 
@@ -406,13 +400,30 @@ def main(argv: list[str] | None = None) -> int:
             customer_ids=args.customer_id,
         )
         catalog = load_json(PRODUCTS_PATH)
-        history_prior = load_history_prior(HISTORY_PRIOR_PATH)
         system_prompt = SYSTEM_PROMPT_PATH.read_text(encoding="utf-8")
+        baseline = load_json(args.baseline) if args.baseline else None
+        prompt_baseline = (
+            load_json(DEFAULT_PROMPT_BASELINE_PATH)
+            if baseline is not None and DEFAULT_PROMPT_BASELINE_PATH.is_file() else None
+        )
+        if prompt_baseline is not None:
+            validate_report(prompt_baseline)
+        if baseline is not None:
+            validate_report(baseline)
+            baseline_check = compare_reports(baseline, baseline)
+            if baseline_check["status"] != "comparable":
+                raise ValueError("基线不可用：" + "；".join(baseline_check["reasons"]))
+        output_path = (args.output or _default_output_path(args.dry_run)).resolve()
+        comparison_path = output_path.with_name(output_path.stem + "_comparison.json")
+        raw_response_dir = output_path.with_name(output_path.stem + "_raw")
+        if args.baseline and args.baseline.resolve() in {output_path, comparison_path}:
+            raise ValueError("输出路径不能覆盖历史基线")
+        if DEFAULT_PROMPT_BASELINE_PATH.resolve() in {output_path, comparison_path}:
+            raise ValueError("输出路径不能覆盖提示词实验基线")
     except (OSError, ValueError) as exc:
         print(f"测试准备失败：{exc}", file=sys.stderr)
         return 1
 
-    output_path = (args.output or _default_output_path(args.dry_run)).resolve()
     report: dict[str, Any] = {
         "run": {
             "started_at": datetime.now().astimezone().isoformat(timespec="seconds"),
@@ -427,48 +438,56 @@ def main(argv: list[str] | None = None) -> int:
             ),
             "sample_size": len(selected),
             "seed": args.seed,
+            "workers": args.workers,
+            "request_interval_seconds": args.request_interval,
+            "max_rate_limit_retries": MAX_RATE_LIMIT_RETRIES,
             "model": None if args.dry_run else MODEL,
+            "output_contract": "top3_only",
+            "raw_response_directory": str(raw_response_dir) if not args.dry_run else None,
+            "api_format": None if args.dry_run else "chat_completions_json",
+            "thinking_budget": None if args.dry_run else 4096,
+            "timeout_seconds": None if args.dry_run else TIMEOUT_SECONDS,
             "api_base_url": None if args.dry_run else API_BASE_URL,
-            "history_rerank": {
-                "enabled": True,
-                "weight": history_prior["default_history_weight"],
-                "source_version": history_prior.get("version"),
-                "validation_mode": "leave_one_out",
-            },
         },
         "summary": {},
         "results": [],
     }
 
-    print(f"将处理 {len(selected)} 条用例，结果写入：{output_path}")
-    for index, case in enumerate(selected, start=1):
-        target = case["validation_target"]
-        print(
-            f"[{index}/{len(selected)}] {case['customer_id']} -> "
-            f"{target['product_name']} ({target['product_id']})",
-            flush=True,
-        )
-        result = evaluate_case(
-            case,
-            catalog,
-            system_prompt,
-            history_prior,
-            dry_run=args.dry_run,
-        )
-        report["results"].append(result)
-        report["summary"] = summarize(report["results"])
-        save_report(report, output_path)
-        if result["status"] == "completed":
-            print(
-                f"  完成：Top1={'是' if result['top1_hit'] else '否'}，"
-                f"Top3={'是' if result['top3_hit'] else '否'}，"
-                f"耗时={result['elapsed_seconds']}s",
-                flush=True,
-            )
-        elif result["status"] == "hard_filter_false_negative":
-            print("  停止：真实产品被硬规则排除", flush=True)
-        elif result["status"] == "failed":
-            print(f"  失败：{result['error']}", flush=True)
+    print(f"将处理 {len(selected)} 条用例，模型 {'不调用（离线）' if args.dry_run else MODEL}，"
+          f"并行数 {args.workers}，结果写入：{output_path}", flush=True)
+    print("模型仅返回 Top3，按原始推荐统计命中率。", flush=True)
+    report["summary"] = summarize([])
+    save_report(report, output_path)
+    pacer = RequestPacer(args.request_interval)
+    completed_results = {}
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
+        futures = {
+            executor.submit(
+                evaluate_case, case, catalog, system_prompt,
+                dry_run=args.dry_run, api_key=api_key, before_request=pacer,
+            ): index
+            for index, case in enumerate(selected)
+        }
+        for future in as_completed(futures):
+            index = futures[future]
+            result = future.result()
+            raw_response = result.pop("_raw_response", None)
+            if raw_response is not None:
+                raw_path = raw_response_dir / f"{index + 1:03d}.json"
+                save_report({"customer_id": result["customer_id"], "response": raw_response}, raw_path)
+                result["response"]["raw_path"] = str(raw_path)
+            completed_results[index] = result
+            # 只有主线程写报告，结果始终按输入顺序排列。
+            report["results"] = [completed_results[i] for i in sorted(completed_results)]
+            report["summary"] = summarize(report["results"])
+            save_report(report, output_path)
+            detail = result.get("error", "")
+            if result["status"] == "completed":
+                detail = (f"Top1={'是' if result['top1_hit'] else '否'}，"
+                          f"Top3={'是' if result['top3_hit'] else '否'}，"
+                          f"耗时={result['elapsed_seconds']}s")
+            print(f"[{len(completed_results)}/{len(selected)}] {result['customer_id']} "
+                  f"{result['status']} {detail}", flush=True)
 
     report["run"]["finished_at"] = datetime.now().astimezone().isoformat(
         timespec="seconds"
@@ -476,6 +495,17 @@ def main(argv: list[str] | None = None) -> int:
     report["summary"] = summarize(report["results"])
     save_report(report, output_path)
     print(json.dumps(report["summary"], ensure_ascii=False, indent=2))
+
+    if baseline is not None:
+        comparison = compare_reports(baseline, report)
+        if prompt_baseline is not None:
+            comparison["prompt_comparison"] = compare_prompt_reports(prompt_baseline, report)
+            comparison["prompt_comparison"]["baseline_path"] = str(DEFAULT_PROMPT_BASELINE_PATH)
+        comparison["baseline_path"] = str(args.baseline.resolve())
+        comparison["current_path"] = str(output_path)
+        save_report(comparison, comparison_path)
+        print_comparison(comparison)
+        print(f"比较报告：{comparison_path}")
 
     # 批量测试允许个别业务失败并完整保存报告；仅准备失败时返回非零。
     return 0

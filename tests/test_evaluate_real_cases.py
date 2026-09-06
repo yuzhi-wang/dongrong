@@ -1,8 +1,46 @@
 from __future__ import annotations
 
+import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest.mock import patch
 
-from evaluate_real_cases import stratified_sample, summarize
+from evaluate_real_cases import save_report, stratified_sample, summarize
+
+
+class SaveReportTest(unittest.TestCase):
+    def test_retries_windows_lock_and_writes_complete_json(self) -> None:
+        locked = PermissionError("file in use")
+        locked.winerror = 32
+        original_replace = Path.replace
+        calls = []
+
+        def replace(source, target):
+            calls.append(target)
+            if len(calls) == 1:
+                raise locked
+            return original_replace(source, target)
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "report.json"
+            path.write_text('{"old": true}', encoding="utf-8")
+            with patch.object(Path, "replace", replace), patch("evaluate_real_cases.time.sleep"):
+                save_report({"results": ["complete"]}, path)
+            self.assertEqual(json.loads(path.read_text(encoding="utf-8")), {"results": ["complete"]})
+            self.assertEqual(len(calls), 2)
+
+    def test_persistent_lock_raises_and_preserves_previous_report(self) -> None:
+        locked = PermissionError("access denied")
+        locked.winerror = 5
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "report.json"
+            path.write_text('{"old": true}', encoding="utf-8")
+            with patch.object(Path, "replace", side_effect=locked) as replace, patch("evaluate_real_cases.time.sleep"):
+                with self.assertRaises(PermissionError):
+                    save_report({"new": True}, path)
+            self.assertEqual(replace.call_count, 5)
+            self.assertEqual(json.loads(path.read_text(encoding="utf-8")), {"old": True})
 
 
 def _case(customer_id: str, product_id: str) -> dict:
@@ -80,28 +118,11 @@ class SummaryTest(unittest.TestCase):
         ]
         summary = summarize(results)
         self.assertEqual(summary["hard_filter"]["false_negative_count"], 1)
-        self.assertEqual(summary["model"]["pre_rerank_recall_at_3_on_completed"], 1.0)
+        self.assertEqual(summary["model"]["recall_at_3_on_completed"], 1.0)
         self.assertEqual(summary["model"]["recall_at_3_on_completed"], 1.0)
         self.assertEqual(summary["end_to_end"]["recall_at_3"], 0.5)
         self.assertEqual(summary["usage"]["total_tokens"], 15)
 
-    def test_reports_pre_rerank_and_final_metrics_separately(self) -> None:
-        results = [
-            {
-                "validation_target": {"product_id": "A", "product_name": "甲"},
-                "target_retained": True,
-                "status": "completed",
-                "pre_rerank_top1_hit": False,
-                "pre_rerank_top3_hit": False,
-                "top1_hit": True,
-                "top3_hit": True,
-                "response": {"usage": {}},
-            }
-        ]
-        summary = summarize(results)
-        self.assertEqual(summary["model"]["pre_rerank_top3_hits"], 0)
-        self.assertEqual(summary["model"]["top3_hits"], 1)
-        self.assertEqual(summary["end_to_end"]["recall_at_3"], 1.0)
 
 
 if __name__ == "__main__":
