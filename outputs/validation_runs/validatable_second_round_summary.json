@@ -1,0 +1,123 @@
+{
+  "run_name": "可正常验证组_12产品分层第二轮_纯排序紧凑输出",
+  "run_window": {
+    "started_at": "2026-09-04T08:55:20+08:00",
+    "finished_at": "2026-09-04T09:13:25+08:00"
+  },
+  "prompt_version": "ranking_v2_compact",
+  "selection": {
+    "strategy": "沿用第一轮相同客户，按真实产品分层",
+    "case_count": 12,
+    "coverage": "12款产品各1条"
+  },
+  "calls": {
+    "submitted": 12,
+    "completed": 12,
+    "timeouts": 0,
+    "retries": 0
+  },
+  "hard_filter": {
+    "target_retained_count": 12,
+    "false_negative_count": 0,
+    "target_recall": 1.0
+  },
+  "response_contract": {
+    "completed_response_count": 12,
+    "valid_response_count": 12,
+    "valid_rate": 1.0,
+    "full_rankings_present": 12,
+    "legacy_evaluations_present": 0
+  },
+  "business_metrics": {
+    "case_count": 12,
+    "top1_hits": 4,
+    "top1_accuracy": 0.3333,
+    "top3_hits": 5,
+    "recall_at_3": 0.4167
+  },
+  "usage": {
+    "input_tokens": 101272,
+    "output_tokens": 75737,
+    "reasoning_tokens": 60142,
+    "total_tokens": 177009,
+    "average_total_tokens": 14750.8,
+    "total_elapsed_seconds": 1046.951,
+    "average_elapsed_seconds": 87.2
+  },
+  "comparison_with_first_round": {
+    "completion_rate": {
+      "before": 0.8333,
+      "after": 1.0,
+      "change_percentage_points": 16.67
+    },
+    "top1_accuracy_on_all_12": {
+      "before": 0.0833,
+      "after": 0.3333,
+      "change_percentage_points": 25.0
+    },
+    "recall_at_3_on_all_12": {
+      "before": 0.3333,
+      "after": 0.4167,
+      "change_percentage_points": 8.34
+    },
+    "observed_total_tokens": {
+      "before": 291550,
+      "after": 177009,
+      "change_rate": -0.3929,
+      "note": "第一轮仅统计10条成功响应，第二轮统计12条成功响应"
+    },
+    "average_tokens_per_completed_response": {
+      "before": 29155.0,
+      "after": 14750.8,
+      "change_rate": -0.4941
+    },
+    "average_elapsed_seconds_per_completed_response": {
+      "before": 110.8,
+      "after": 87.2,
+      "change_rate": -0.213
+    }
+  },
+  "recommendation_distribution": {
+    "top1": [
+      {"product_id": "CCB_CREDIT_JYD_SZ", "product_name": "建易贷", "count": 5},
+      {"product_id": "PSBC_CREDIT_YXD_SZ", "product_name": "邮享贷", "count": 3},
+      {"product_id": "ICBC_CREDIT_REJ_SZ", "product_name": "融e借", "count": 2},
+      {"product_id": "SPDB_CREDIT_PSD_SZ", "product_name": "浦闪贷", "count": 1},
+      {"product_id": "XYCF_CREDIT_XYXFD_SZ", "product_name": "家庭综合消费贷", "count": 1}
+    ],
+    "top3_appearances": [
+      {"product_id": "PSBC_CREDIT_YXD_SZ", "product_name": "邮享贷", "count": 10},
+      {"product_id": "ICBC_CREDIT_REJ_SZ", "product_name": "融e借", "count": 9},
+      {"product_id": "CCB_CREDIT_JYD_SZ", "product_name": "建易贷", "count": 5},
+      {"product_id": "ABC_CREDIT_WJD_SZ", "product_name": "网捷贷", "count": 3},
+      {"product_id": "SPDB_CREDIT_PSD_SZ", "product_name": "浦闪贷", "count": 3},
+      {"product_id": "CCB_CREDIT_KD_SZ", "product_name": "快贷", "count": 2},
+      {"product_id": "CMB_CREDIT_SDD_SZ", "product_name": "闪电贷", "count": 2},
+      {"product_id": "BOC_CREDIT_ZYED_SZ", "product_name": "中银e贷", "count": 1},
+      {"product_id": "XYCF_CREDIT_XYXFD_SZ", "product_name": "家庭综合消费贷", "count": 1}
+    ]
+  },
+  "case_outcomes": [
+    {"customer_id": "C016", "target": "网捷贷", "target_rank": 3},
+    {"customer_id": "C021", "target": "中银e贷", "target_rank": null},
+    {"customer_id": "C223", "target": "苏农e贷", "target_rank": null},
+    {"customer_id": "C129", "target": "建易贷", "target_rank": 1},
+    {"customer_id": "C197", "target": "快贷", "target_rank": null},
+    {"customer_id": "C001", "target": "闪电贷", "target_rank": null},
+    {"customer_id": "C071", "target": "融e借", "target_rank": 1},
+    {"customer_id": "C109", "target": "你好e贷", "target_rank": null},
+    {"customer_id": "C115", "target": "诚易贷", "target_rank": null},
+    {"customer_id": "C060", "target": "邮享贷", "target_rank": 1},
+    {"customer_id": "C035", "target": "浦闪贷", "target_rank": null},
+    {"customer_id": "C104", "target": "家庭综合消费贷", "target_rank": 1}
+  ],
+  "source_reports": [
+    "validatable_real_20260904_085520.json",
+    "validatable_real_20260904_085731.json"
+  ],
+  "notes": [
+    "全部12条真实产品均通过本地硬过滤保留。",
+    "历史放款标签仅用于模型返回后的指标计算，没有进入提示词。",
+    "请求使用store=false，未创建可供后续会话引用的远端响应存储。"
+  ]
+}

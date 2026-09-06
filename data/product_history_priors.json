@@ -1,0 +1,81 @@
+{
+  "version": "2026-09-04-validatable-93",
+  "source": "data/validation_groups/customers_validatable.json",
+  "method": "global_product_frequency",
+  "sample_count": 93,
+  "default_history_weight": 0.5,
+  "products": [
+    {
+      "product_id": "NYBF_CREDIT_CYD_SZ",
+      "product_name": "诚易贷",
+      "count": 26,
+      "prior": 0.27957
+    },
+    {
+      "product_id": "ICBC_CREDIT_REJ_SZ",
+      "product_name": "融e借",
+      "count": 22,
+      "prior": 0.236559
+    },
+    {
+      "product_id": "ABC_CREDIT_WJD_SZ",
+      "product_name": "网捷贷",
+      "count": 13,
+      "prior": 0.139785
+    },
+    {
+      "product_id": "CCB_CREDIT_JYD_SZ",
+      "product_name": "建易贷",
+      "count": 10,
+      "prior": 0.107527
+    },
+    {
+      "product_id": "XYCF_CREDIT_XYXFD_SZ",
+      "product_name": "家庭综合消费贷",
+      "count": 6,
+      "prior": 0.064516
+    },
+    {
+      "product_id": "BOC_CREDIT_ZYED_SZ",
+      "product_name": "中银e贷",
+      "count": 4,
+      "prior": 0.043011
+    },
+    {
+      "product_id": "NJCB_CREDIT_NHED_SZ",
+      "product_name": "你好e贷",
+      "count": 4,
+      "prior": 0.043011
+    },
+    {
+      "product_id": "CMB_CREDIT_SDD_SZ",
+      "product_name": "闪电贷",
+      "count": 3,
+      "prior": 0.032258
+    },
+    {
+      "product_id": "PSBC_CREDIT_YXD_SZ",
+      "product_name": "邮享贷",
+      "count": 2,
+      "prior": 0.021505
+    },
+    {
+      "product_id": "BOS_CREDIT_SNED_SZ",
+      "product_name": "苏农e贷",
+      "count": 1,
+      "prior": 0.010753
+    },
+    {
+      "product_id": "CCB_CREDIT_KD_SZ",
+      "product_name": "快贷",
+      "count": 1,
+      "prior": 0.010753
+    },
+    {
+      "product_id": "SPDB_CREDIT_PSD_SZ",
+      "product_name": "浦闪贷",
+      "count": 1,
+      "prior": 0.010753
+    }
+  ]
+}

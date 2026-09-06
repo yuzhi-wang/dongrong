@@ -9,10 +9,12 @@ from pathlib import Path
 
 from dashscope_client import call_responses, extract_output_text
 from hard_filter import filter_products
+from history_rerank import load_history_prior, rerank_recommendation
 
 
 ROOT_DIR = Path(__file__).resolve().parent
 PRODUCTS_PATH = ROOT_DIR / "data" / "loan_products.json"
+HISTORY_PRIOR_PATH = ROOT_DIR / "data" / "product_history_priors.json"
 CUSTOMER_PATH = ROOT_DIR / "data" / "test_customer.json"
 SYSTEM_PROMPT_PATH = ROOT_DIR / "prompts" / "loan_recommendation_system.md"
 USER_PROMPT_PATH = ROOT_DIR / "prompts" / "loan_recommendation_user.md"
@@ -61,7 +63,13 @@ def validate_inputs() -> None:
 
     missing_files = [
         path.relative_to(ROOT_DIR).as_posix()
-        for path in (PRODUCTS_PATH, CUSTOMER_PATH, SYSTEM_PROMPT_PATH, USER_PROMPT_PATH)
+        for path in (
+            PRODUCTS_PATH,
+            HISTORY_PRIOR_PATH,
+            CUSTOMER_PATH,
+            SYSTEM_PROMPT_PATH,
+            USER_PROMPT_PATH,
+        )
         if not path.is_file()
     ]
     if missing_files:
@@ -153,6 +161,7 @@ def main() -> int:
     try:
         validate_inputs()
         catalog = load_json(PRODUCTS_PATH)
+        history_prior = load_history_prior(HISTORY_PRIOR_PATH)
         customer = load_json(CUSTOMER_PATH)
         hard_filter_result = filter_products(catalog, customer)
         candidates = hard_filter_result["candidates"]
@@ -167,9 +176,17 @@ def main() -> int:
             input_text=build_user_prompt(hard_filter_result, customer),
             timeout_seconds=TIMEOUT_SECONDS,
         )
-        recommendation = parse_recommendation(
+        model_recommendation = parse_recommendation(
             extract_output_text(response),
             expected_product_ids={product["产品唯一ID"] for product in candidates},
+        )
+        recommendation = rerank_recommendation(
+            model_recommendation,
+            history_prior,
+            {
+                product["产品唯一ID"]: product
+                for product in candidates
+            },
         )
     except (ValueError, RuntimeError) as exc:
         print(f"执行失败：{exc}", file=sys.stderr)
@@ -183,7 +200,7 @@ def main() -> int:
         "excluded_products": hard_filter_result["excluded_products"],
     }, ensure_ascii=False, indent=2))
 
-    print("\n===== Qwen 候选产品推荐结果 =====")
+    print("\n===== Qwen + 历史先验最终推荐结果 =====")
     print(json.dumps(recommendation, ensure_ascii=False, indent=2))
 
     usage = response.get("usage") or {}

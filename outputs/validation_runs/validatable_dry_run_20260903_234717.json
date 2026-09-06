@@ -1,0 +1,402 @@
+{
+  "run": {
+    "started_at": "2026-09-03T23:47:17+08:00",
+    "mode": "dry_run",
+    "source_group": "validatable",
+    "selection": "stratified_by_target_product",
+    "sample_size": 12,
+    "seed": 20260903,
+    "model": null,
+    "api_base_url": null,
+    "finished_at": "2026-09-03T23:47:17+08:00"
+  },
+  "summary": {
+    "case_count": 12,
+    "hard_filter": {
+      "target_retained_count": 12,
+      "false_negative_count": 0,
+      "target_recall": 1.0
+    },
+    "model": {
+      "completed_count": 0,
+      "failed_count": 0,
+      "top1_hits": 0,
+      "top3_hits": 0,
+      "top1_accuracy_on_completed": null,
+      "recall_at_3_on_completed": null
+    },
+    "end_to_end": {
+      "top1_accuracy": 0.0,
+      "recall_at_3": 0.0
+    },
+    "usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_tokens": 0
+    },
+    "by_product": [
+      {
+        "product_id": "ABC_CREDIT_WJD_SZ",
+        "product_name": "网捷贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "product_name": "中银e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "BOS_CREDIT_SNED_SZ",
+        "product_name": "苏农e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "product_name": "建易贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "CCB_CREDIT_KD_SZ",
+        "product_name": "快贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "CMB_CREDIT_SDD_SZ",
+        "product_name": "闪电贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "product_name": "融e借",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "NJCB_CREDIT_NHED_SZ",
+        "product_name": "你好e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "product_name": "诚易贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "PSBC_CREDIT_YXD_SZ",
+        "product_name": "邮享贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "SPDB_CREDIT_PSD_SZ",
+        "product_name": "浦闪贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "XYCF_CREDIT_XYXFD_SZ",
+        "product_name": "家庭综合消费贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 0,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      }
+    ]
+  },
+  "results": [
+    {
+      "customer_id": "C016",
+      "validation_target": {
+        "product_id": "ABC_CREDIT_WJD_SZ",
+        "bank_name": "中国农业银行",
+        "product_name": "网捷贷",
+        "approved_amount": 210000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国农业银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C021",
+      "validation_target": {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "bank_name": "中国银行",
+        "product_name": "中银e贷",
+        "approved_amount": 200000,
+        "annual_rate": 0.034,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C223",
+      "validation_target": {
+        "product_id": "BOS_CREDIT_SNED_SZ",
+        "bank_name": "苏州农村商业银行",
+        "product_name": "苏农e贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.048,
+        "repayment_method": "先息后本",
+        "source_bank_name": "江苏苏州农村商业银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C129",
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 610000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 9,
+        "excluded_count": 3,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C197",
+      "validation_target": {
+        "product_id": "CCB_CREDIT_KD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "快贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.03,
+        "repayment_method": "等额本息",
+        "source_bank_name": "中国建设银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C001",
+      "validation_target": {
+        "product_id": "CMB_CREDIT_SDD_SZ",
+        "bank_name": "招商银行",
+        "product_name": "闪电贷",
+        "approved_amount": 180000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "招商银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C071",
+      "validation_target": {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "bank_name": "中国工商银行",
+        "product_name": "融e借",
+        "approved_amount": 300000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本,上海浦东发展银行",
+        "source_bank_name": "中国工商银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 6,
+        "excluded_count": 6,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C109",
+      "validation_target": {
+        "product_id": "NJCB_CREDIT_NHED_SZ",
+        "bank_name": "南京银行",
+        "product_name": "你好e贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.085,
+        "repayment_method": "先息后本",
+        "source_bank_name": "南京银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C115",
+      "validation_target": {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "bank_name": "南银法巴消费金融",
+        "product_name": "诚易贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.14,
+        "repayment_method": "等额本息",
+        "source_bank_name": "南银法巴消费金融"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C060",
+      "validation_target": {
+        "product_id": "PSBC_CREDIT_YXD_SZ",
+        "bank_name": "中国邮政储蓄银行",
+        "product_name": "邮享贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.049,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国邮政储蓄银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 9,
+        "excluded_count": 3,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C035",
+      "validation_target": {
+        "product_id": "SPDB_CREDIT_PSD_SZ",
+        "bank_name": "上海浦东发展银行",
+        "product_name": "浦闪贷",
+        "approved_amount": 230000,
+        "annual_rate": 0.033,
+        "repayment_method": "等额本息",
+        "source_bank_name": "上海浦东发展银行"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      }
+    },
+    {
+      "customer_id": "C104",
+      "validation_target": {
+        "product_id": "XYCF_CREDIT_XYXFD_SZ",
+        "bank_name": "兴业消费金融",
+        "product_name": "家庭综合消费贷",
+        "approved_amount": 200000,
+        "annual_rate": 0.11199999999999999,
+        "repayment_method": "等额本息",
+        "source_bank_name": "兴业消费金融"
+      },
+      "status": "dry_run",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 9,
+        "excluded_count": 3,
+        "target_exclusion": null
+      }
+    }
+  ]
+}

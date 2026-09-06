@@ -1,8 +1,9 @@
-"""用历史真实用例评估“本地硬过滤 + Qwen Top3”流程。
+"""用历史真实用例评估“本地硬过滤 + Qwen + 历史先验重排”流程。
 
 默认从可正常验证组中按真实产品分层抽取 12 条，每款产品至少一条。
 模型调用前只使用客户 ``input``；调用完成后才用 ``validation_target``
-计算 Top1、Recall@3 和硬规则误删率。
+计算重排前后 Top1、Recall@3 和硬规则误删率。历史先验重排在模型
+返回后执行，并从当前真实产品的历史计数中扣除1条，避免直接标签泄漏。
 """
 
 from __future__ import annotations
@@ -19,9 +20,11 @@ from typing import Any
 
 from dashscope_client import call_responses, extract_output_text
 from hard_filter import filter_products
+from history_rerank import load_history_prior, rerank_recommendation
 from main import (
     API_BASE_URL,
     API_KEY,
+    HISTORY_PRIOR_PATH,
     MODEL,
     PRODUCTS_PATH,
     SYSTEM_PROMPT_PATH,
@@ -135,6 +138,14 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
     model_exercised = bool(completed or failed)
     top1_hits = sum(bool(item.get("top1_hit")) for item in completed)
     top3_hits = sum(bool(item.get("top3_hit")) for item in completed)
+    pre_rerank_top1_hits = sum(
+        bool(item.get("pre_rerank_top1_hit", item.get("top1_hit")))
+        for item in completed
+    )
+    pre_rerank_top3_hits = sum(
+        bool(item.get("pre_rerank_top3_hit", item.get("top3_hit")))
+        for item in completed
+    )
 
     usage_fields = ("input_tokens", "output_tokens", "total_tokens")
     total_usage = {
@@ -158,6 +169,14 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
         group_model_exercised = bool(group_completed or group_failed)
         group_top1 = sum(bool(item.get("top1_hit")) for item in group_completed)
         group_top3 = sum(bool(item.get("top3_hit")) for item in group_completed)
+        group_pre_rerank_top1 = sum(
+            bool(item.get("pre_rerank_top1_hit", item.get("top1_hit")))
+            for item in group_completed
+        )
+        group_pre_rerank_top3 = sum(
+            bool(item.get("pre_rerank_top3_hit", item.get("top3_hit")))
+            for item in group_completed
+        )
         by_product.append({
             "product_id": product_id,
             "product_name": group[0]["validation_target"].get("product_name"),
@@ -166,6 +185,8 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
                 bool(item.get("target_retained")) for item in group
             ),
             "completed_count": len(group_completed),
+            "pre_rerank_top1_hits": group_pre_rerank_top1,
+            "pre_rerank_top3_hits": group_pre_rerank_top3,
             "top1_hits": group_top1,
             "top3_hits": group_top3,
             "end_to_end_top1_accuracy": (
@@ -187,6 +208,16 @@ def summarize(results: list[dict[str, Any]]) -> dict[str, Any]:
             "completed_count": len(completed),
             "failed_count": len(failed),
             "not_exercised_count": len(not_exercised),
+            "pre_rerank_top1_hits": pre_rerank_top1_hits,
+            "pre_rerank_top3_hits": pre_rerank_top3_hits,
+            "pre_rerank_top1_accuracy_on_completed": _safe_rate(
+                pre_rerank_top1_hits,
+                len(completed),
+            ),
+            "pre_rerank_recall_at_3_on_completed": _safe_rate(
+                pre_rerank_top3_hits,
+                len(completed),
+            ),
             "top1_hits": top1_hits,
             "top3_hits": top3_hits,
             "top1_accuracy_on_completed": _safe_rate(top1_hits, len(completed)),
@@ -227,6 +258,7 @@ def evaluate_case(
     case: dict[str, Any],
     catalog: dict[str, Any],
     system_prompt: str,
+    history_prior: dict[str, Any],
     *,
     dry_run: bool,
 ) -> dict[str, Any]:
@@ -279,15 +311,28 @@ def evaluate_case(
             input_text=build_user_prompt(hard_filter_result, customer),
             timeout_seconds=TIMEOUT_SECONDS,
         )
-        recommendation = parse_recommendation(
+        model_recommendation = parse_recommendation(
             extract_output_text(response),
             expected_product_ids=candidate_ids,
         )
-        if recommendation.get("customer_id") != customer_id:
+        if model_recommendation.get("customer_id") != customer_id:
             raise RuntimeError(
                 "模型返回的 customer_id 与当前测试客户不一致："
-                f"{recommendation.get('customer_id')!r}"
+                f"{model_recommendation.get('customer_id')!r}"
             )
+        pre_rerank_top3_ids = [
+            item.get("product_id")
+            for item in model_recommendation.get("top3", [])
+        ]
+        recommendation = rerank_recommendation(
+            model_recommendation,
+            history_prior,
+            {
+                product["产品唯一ID"]: product
+                for product in hard_filter_result["candidates"]
+            },
+            exclude_product_id=target_product_id,
+        )
         top3_ids = [item.get("product_id") for item in recommendation.get("top3", [])]
         if len(top3_ids) != len(set(top3_ids)):
             raise RuntimeError("模型返回的 Top3 含重复产品")
@@ -300,6 +345,11 @@ def evaluate_case(
     result.update({
         "status": "completed",
         "elapsed_seconds": round(time.perf_counter() - started_at, 3),
+        "pre_rerank_top1_hit": (
+            bool(pre_rerank_top3_ids)
+            and pre_rerank_top3_ids[0] == target_product_id
+        ),
+        "pre_rerank_top3_hit": target_product_id in pre_rerank_top3_ids,
         "top1_hit": bool(top3_ids) and top3_ids[0] == target_product_id,
         "top3_hit": target_product_id in top3_ids,
         "target_rank": (
@@ -356,6 +406,7 @@ def main(argv: list[str] | None = None) -> int:
             customer_ids=args.customer_id,
         )
         catalog = load_json(PRODUCTS_PATH)
+        history_prior = load_history_prior(HISTORY_PRIOR_PATH)
         system_prompt = SYSTEM_PROMPT_PATH.read_text(encoding="utf-8")
     except (OSError, ValueError) as exc:
         print(f"测试准备失败：{exc}", file=sys.stderr)
@@ -378,6 +429,12 @@ def main(argv: list[str] | None = None) -> int:
             "seed": args.seed,
             "model": None if args.dry_run else MODEL,
             "api_base_url": None if args.dry_run else API_BASE_URL,
+            "history_rerank": {
+                "enabled": True,
+                "weight": history_prior["default_history_weight"],
+                "source_version": history_prior.get("version"),
+                "validation_mode": "leave_one_out",
+            },
         },
         "summary": {},
         "results": [],
@@ -395,6 +452,7 @@ def main(argv: list[str] | None = None) -> int:
             case,
             catalog,
             system_prompt,
+            history_prior,
             dry_run=args.dry_run,
         )
         report["results"].append(result)

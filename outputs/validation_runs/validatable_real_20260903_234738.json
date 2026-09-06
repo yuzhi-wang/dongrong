@@ -1,0 +1,289 @@
+{
+  "run": {
+    "started_at": "2026-09-03T23:47:38+08:00",
+    "mode": "real",
+    "source_group": "validatable",
+    "selection": "explicit_customer_ids",
+    "sample_size": 1,
+    "seed": 20260903,
+    "model": "qwen3.7-max",
+    "api_base_url": "https://dashscope.aliyuncs.com",
+    "finished_at": "2026-09-03T23:49:16+08:00"
+  },
+  "summary": {
+    "case_count": 1,
+    "hard_filter": {
+      "target_retained_count": 1,
+      "false_negative_count": 0,
+      "target_recall": 1.0
+    },
+    "model": {
+      "completed_count": 1,
+      "failed_count": 0,
+      "top1_hits": 0,
+      "top3_hits": 1,
+      "top1_accuracy_on_completed": 0.0,
+      "recall_at_3_on_completed": 1.0
+    },
+    "end_to_end": {
+      "top1_accuracy": 0.0,
+      "recall_at_3": 1.0
+    },
+    "usage": {
+      "input_tokens": 21311,
+      "output_tokens": 7889,
+      "total_tokens": 29200
+    },
+    "by_product": [
+      {
+        "product_id": "ABC_CREDIT_WJD_SZ",
+        "product_name": "网捷贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 1,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 1.0
+      }
+    ]
+  },
+  "results": [
+    {
+      "customer_id": "C016",
+      "validation_target": {
+        "product_id": "ABC_CREDIT_WJD_SZ",
+        "bank_name": "中国农业银行",
+        "product_name": "网捷贷",
+        "approved_amount": 210000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国农业银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 98.395,
+      "top1_hit": false,
+      "top3_hit": true,
+      "target_rank": 3,
+      "response": {
+        "id": "resp_e6aa36eb-01dc-967a-8a7a-ae64512929a7",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 21311,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 7889,
+          "output_tokens_details": {
+            "reasoning_tokens": 6047
+          },
+          "total_tokens": 29200,
+          "x_details": [
+            {
+              "input_tokens": 21311,
+              "output_tokens": 7889,
+              "output_tokens_details": {
+                "reasoning_tokens": 6047
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 29200,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C016",
+        "evaluated_product_count": 12,
+        "eligible_count": 0,
+        "conditional_count": 11,
+        "ineligible_count": 1,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "status": "conditional",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "优先推荐产品，最低年利率3.0%，符合客户利率优先需求",
+              "最高额度100万，完全覆盖客户11-30万的申请区间",
+              "客户公积金基数6847元满足要求，待确认连续缴存月数及其他征信信息"
+            ],
+            "missing_information": [
+              "city",
+              "current_overdue",
+              "has_90_day_overdue",
+              "customer_type",
+              "provident_fund_months",
+              "loan_inquiries_6m",
+              "credit_card_utilization"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "status": "conditional",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "优先推荐产品，最低年利率3.0%，符合客户利率优先需求",
+              "最高额度100万，完全覆盖客户11-30万的申请区间",
+              "客户社保缴纳3年以上，高度匹配普通单位社保客群要求"
+            ],
+            "missing_information": [
+              "city",
+              "current_overdue",
+              "has_90_day_overdue",
+              "customer_type",
+              "overdue_count_2y",
+              "overdue_count_6m",
+              "loan_inquiries_6m",
+              "total_non_mortgage_car_debt",
+              "lending_institution_count"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "status": "conditional",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "优先推荐产品，最低年利率3.0%，符合客户利率优先需求",
+              "最高额度100万，完全覆盖客户11-30万的申请区间",
+              "客户公积金基数达标，支持线下加白准入，待确认缴存月数等信息"
+            ],
+            "missing_information": [
+              "city",
+              "current_overdue",
+              "has_90_day_overdue",
+              "customer_type",
+              "overdue_count_2y",
+              "loan_inquiries_6m",
+              "business_loan_count"
+            ]
+          }
+        ],
+        "evaluations": [
+          {
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "status": "ineligible",
+            "reasons": [
+              "客户为普通企业，不符合产品要求的优质单位性质",
+              "客户公积金基数6847元，未达到普通单位线下加白要求的10000元基数"
+            ]
+          },
+          {
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户社保缴纳3年以上，符合客群1社保要求",
+              "缺失城市、当前逾期、90天逾期、客群身份等关键信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户公积金基数6847元满足要求，但公积金连续缴存月数缺失",
+              "缺失城市、逾期记录、客群身份等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户社保缴纳3年以上，符合客群3普通单位社保要求",
+              "缺失城市、逾期记录、客群身份、负债及在贷机构数等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户社保缴纳3年以上符合客群1要求",
+              "产品最高额度20万，仅部分覆盖客户11-30万的申请区间",
+              "缺失城市、逾期、身份等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户在职3年以上、社保3年以上基本符合普通单位要求，但社保基数缺失",
+              "缺失城市、逾期、身份、负债等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户有按揭房及公积金，可能符合他行房贷或公积金客群，但具体还款月数及公积金连续缴存月数缺失",
+              "缺失城市、逾期、身份等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户公积金基数6847元满足要求，但连续缴存月数缺失",
+              "缺失城市、逾期、身份、经营贷笔数等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户公积金基数6847元及打卡工资满足普通单位要求，但连续缴存及打卡月数缺失",
+              "缺失城市、逾期、身份等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户社保缴纳3年以上，符合客群5社保要求",
+              "缺失城市、逾期、身份、负债、在贷机构数等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户社保缴纳3年以上，符合客群5社保要求",
+              "缺失城市、逾期、身份、负债、在贷机构数等信息，需进一步确认"
+            ]
+          },
+          {
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户公积金基数及社保年限可能符合客群1或2，但社保基数及连续缴存月数缺失",
+              "缺失城市、逾期、身份、负债等信息，需进一步确认"
+            ]
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    }
+  ]
+}

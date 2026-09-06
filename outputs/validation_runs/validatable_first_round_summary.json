@@ -1,0 +1,181 @@
+{
+  "run_name": "可正常验证组_12产品分层首轮",
+  "run_window": {
+    "started_at": "2026-09-03T23:47:38+08:00",
+    "finished_at": "2026-09-04T00:18:40+08:00"
+  },
+  "selection": {
+    "strategy": "按真实产品分层抽样",
+    "case_count": 12,
+    "coverage": "12款产品各1条"
+  },
+  "calls": {
+    "submitted": 12,
+    "completed": 10,
+    "timeouts": 2,
+    "timeout_seconds": 180,
+    "timeout_customers": [
+      "C109",
+      "C104"
+    ],
+    "retries": 0
+  },
+  "hard_filter": {
+    "target_retained_count": 12,
+    "false_negative_count": 0,
+    "target_recall": 1.0
+  },
+  "response_contract": {
+    "completed_response_count": 10,
+    "valid_response_count": 10,
+    "valid_rate": 1.0
+  },
+  "model_on_completed": {
+    "case_count": 10,
+    "top1_hits": 1,
+    "top1_accuracy": 0.1,
+    "top3_hits": 4,
+    "recall_at_3": 0.4
+  },
+  "end_to_end_on_submitted": {
+    "case_count": 12,
+    "top1_hits": 1,
+    "top1_accuracy": 0.0833,
+    "top3_hits": 4,
+    "recall_at_3": 0.3333
+  },
+  "observed_usage_for_completed_responses": {
+    "input_tokens": 200330,
+    "output_tokens": 91220,
+    "reasoning_tokens": 67537,
+    "total_tokens": 291550,
+    "average_total_tokens": 29155,
+    "average_elapsed_seconds": 110.8,
+    "note": "两条超时请求的最终计费用量未知，未计入"
+  },
+  "recommendation_distribution": {
+    "top1": [
+      {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "product_name": "融e借",
+        "count": 6
+      },
+      {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "product_name": "建易贷",
+        "count": 4
+      }
+    ],
+    "top3_appearances": [
+      {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "product_name": "融e借",
+        "count": 10
+      },
+      {
+        "product_id": "PSBC_CREDIT_YXD_SZ",
+        "product_name": "邮享贷",
+        "count": 7
+      },
+      {
+        "product_id": "ABC_CREDIT_WJD_SZ",
+        "product_name": "网捷贷",
+        "count": 6
+      },
+      {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "product_name": "建易贷",
+        "count": 6
+      },
+      {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "product_name": "诚易贷",
+        "count": 1
+      }
+    ]
+  },
+  "case_outcomes": [
+    {
+      "customer_id": "C016",
+      "target": "网捷贷",
+      "status": "completed",
+      "target_rank": 3
+    },
+    {
+      "customer_id": "C021",
+      "target": "中银e贷",
+      "status": "completed",
+      "target_rank": null
+    },
+    {
+      "customer_id": "C223",
+      "target": "苏农e贷",
+      "status": "completed",
+      "target_rank": null
+    },
+    {
+      "customer_id": "C129",
+      "target": "建易贷",
+      "status": "completed",
+      "target_rank": 3
+    },
+    {
+      "customer_id": "C197",
+      "target": "快贷",
+      "status": "completed",
+      "target_rank": null
+    },
+    {
+      "customer_id": "C001",
+      "target": "闪电贷",
+      "status": "completed",
+      "target_rank": null
+    },
+    {
+      "customer_id": "C071",
+      "target": "融e借",
+      "status": "completed",
+      "target_rank": 1
+    },
+    {
+      "customer_id": "C109",
+      "target": "你好e贷",
+      "status": "timeout",
+      "target_rank": null
+    },
+    {
+      "customer_id": "C115",
+      "target": "诚易贷",
+      "status": "completed",
+      "target_rank": null
+    },
+    {
+      "customer_id": "C060",
+      "target": "邮享贷",
+      "status": "completed",
+      "target_rank": 3
+    },
+    {
+      "customer_id": "C035",
+      "target": "浦闪贷",
+      "status": "completed",
+      "target_rank": null
+    },
+    {
+      "customer_id": "C104",
+      "target": "家庭综合消费贷",
+      "status": "timeout",
+      "target_rank": null
+    }
+  ],
+  "source_reports": [
+    "validatable_real_20260903_234738.json",
+    "validatable_real_20260903_234958.json",
+    "validatable_real_20260904_001109.json"
+  ],
+  "notes": [
+    "C109超时发生在客户端补充TimeoutError捕获之前，因此其失败未写入第二段原始报告；此汇总已补记。",
+    "10条成功响应共评估105个候选：104个conditional、1个ineligible、0个eligible。",
+    "历史实际放款产品仅用于响应返回后的指标计算，没有进入硬过滤或模型提示词。"
+  ]
+}

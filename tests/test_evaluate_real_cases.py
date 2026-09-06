@@ -80,9 +80,28 @@ class SummaryTest(unittest.TestCase):
         ]
         summary = summarize(results)
         self.assertEqual(summary["hard_filter"]["false_negative_count"], 1)
+        self.assertEqual(summary["model"]["pre_rerank_recall_at_3_on_completed"], 1.0)
         self.assertEqual(summary["model"]["recall_at_3_on_completed"], 1.0)
         self.assertEqual(summary["end_to_end"]["recall_at_3"], 0.5)
         self.assertEqual(summary["usage"]["total_tokens"], 15)
+
+    def test_reports_pre_rerank_and_final_metrics_separately(self) -> None:
+        results = [
+            {
+                "validation_target": {"product_id": "A", "product_name": "甲"},
+                "target_retained": True,
+                "status": "completed",
+                "pre_rerank_top1_hit": False,
+                "pre_rerank_top3_hit": False,
+                "top1_hit": True,
+                "top3_hit": True,
+                "response": {"usage": {}},
+            }
+        ]
+        summary = summarize(results)
+        self.assertEqual(summary["model"]["pre_rerank_top3_hits"], 0)
+        self.assertEqual(summary["model"]["top3_hits"], 1)
+        self.assertEqual(summary["end_to_end"]["recall_at_3"], 1.0)
 
 
 if __name__ == "__main__":

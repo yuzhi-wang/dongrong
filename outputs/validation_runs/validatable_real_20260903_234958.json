@@ -1,0 +1,1604 @@
+{
+  "run": {
+    "started_at": "2026-09-03T23:49:58+08:00",
+    "mode": "real",
+    "source_group": "validatable",
+    "selection": "explicit_customer_ids",
+    "sample_size": 11,
+    "seed": 20260903,
+    "model": "qwen3.7-max",
+    "api_base_url": "https://dashscope.aliyuncs.com"
+  },
+  "summary": {
+    "case_count": 6,
+    "hard_filter": {
+      "target_retained_count": 6,
+      "false_negative_count": 0,
+      "target_recall": 1.0
+    },
+    "model": {
+      "completed_count": 6,
+      "failed_count": 0,
+      "top1_hits": 1,
+      "top3_hits": 2,
+      "top1_accuracy_on_completed": 0.1667,
+      "recall_at_3_on_completed": 0.3333
+    },
+    "end_to_end": {
+      "top1_accuracy": 0.1667,
+      "recall_at_3": 0.3333
+    },
+    "usage": {
+      "input_tokens": 117712,
+      "output_tokens": 61055,
+      "total_tokens": 178767
+    },
+    "by_product": [
+      {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "product_name": "中银e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "BOS_CREDIT_SNED_SZ",
+        "product_name": "苏农e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "product_name": "建易贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 1,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 1.0
+      },
+      {
+        "product_id": "CCB_CREDIT_KD_SZ",
+        "product_name": "快贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "CMB_CREDIT_SDD_SZ",
+        "product_name": "闪电贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "product_name": "融e借",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 1,
+        "top3_hits": 1,
+        "end_to_end_top1_accuracy": 1.0,
+        "end_to_end_recall_at_3": 1.0
+      }
+    ]
+  },
+  "results": [
+    {
+      "customer_id": "C021",
+      "validation_target": {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "bank_name": "中国银行",
+        "product_name": "中银e贷",
+        "approved_amount": 200000,
+        "annual_rate": 0.034,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 120.327,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_06219f7f-10ff-94ee-b87d-92b5436be3a7",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 20683,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 10525,
+          "output_tokens_details": {
+            "reasoning_tokens": 8164
+          },
+          "total_tokens": 31208,
+          "x_details": [
+            {
+              "input_tokens": 20683,
+              "output_tokens": 10525,
+              "output_tokens_details": {
+                "reasoning_tokens": 8164
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 31208,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C021",
+        "evaluated_product_count": 11,
+        "eligible_count": 0,
+        "conditional_count": 11,
+        "ineligible_count": 0,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "最高额度100万充分满足额度优先需求",
+              "年利率3%-6%处于市场低位",
+              "最长期限84个月还款压力小",
+              "优先推荐产品",
+              "支持先息后本/等额本息/等额本金/随借随还多种还款方式"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（当前逾期）",
+              "has_90_day_overdue（90天及以上逾期）",
+              "overdue_count_2y（近2年逾期次数，上限4次）",
+              "loan_inquiries_6m（近6个月查询次数，上限10次）",
+              "credit_card_utilization（信用卡使用率，上限80%）",
+              "customer_type（客群身份）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "最高额度100万充分满足额度优先需求",
+              "年利率3%-6.2%较低",
+              "优先推荐产品",
+              "支持先息后本/等额本息/等额本金/随借随还",
+              "客户有公积金缴存且社保3年以上，可能符合公积金或社保客群准入"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（当前逾期）",
+              "has_90_day_overdue（90天及以上逾期）",
+              "overdue_count_2y（近2年逾期次数，上限6次）",
+              "loan_inquiries_6m（近6个月查询次数，上限12次）",
+              "business_loan_count（经营贷款笔数，上限0笔）",
+              "customer_type（客群身份）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "bank_name": "南银法巴消费金融",
+            "product_name": "诚易贷",
+            "status": "conditional",
+            "amount_range": "最高60万元",
+            "annual_rate_range": "3.5%-18.8%",
+            "term_months_max": 60,
+            "reasons": [
+              "待确认字段最少（仅5项），准入确定性最高",
+              "最高额度60万覆盖11-30万申请区间",
+              "优先推荐产品",
+              "征信豁免机制（逾期100元内）提供额外容错",
+              "客户社保3年以上、有公积金，可能符合社保或公积金缴存客群"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（当前逾期）",
+              "has_90_day_overdue（90天及以上逾期）",
+              "overdue_count_5y（近5年逾期次数，上限12次）",
+              "customer_type（客群身份）"
+            ]
+          }
+        ],
+        "evaluations": [
+          {
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合22-54岁要求",
+              "近1个月查询1次未超上限6次",
+              "信用卡张数未限制",
+              "最高额度60万覆盖申请区间",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近5年逾期次数（上限12次）、客群身份"
+            ]
+          },
+          {
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合18-60岁要求",
+              "最高额度100万充分覆盖申请区间",
+              "利率3%-6%较低",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限4次）、近6个月查询次数（上限10次）、信用卡使用率（上限80%）、客群身份"
+            ]
+          },
+          {
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合18-65岁要求",
+              "最高额度100万充分覆盖申请区间",
+              "利率3%-6%较低",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限6次）、近半年逾期次数（上限0次）、近6个月查询次数（上限9次）、负债总额（普通单位≤80万）、在贷机构数（上限5）、客群身份"
+            ]
+          },
+          {
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合22-60岁要求",
+              "最高额度20万仅部分覆盖11-30万申请区间（上限不足30万）",
+              "利率7.2%-22.8%偏高",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限6次）、近3个月查询次数（上限13次）、负债收入比、客群身份"
+            ]
+          },
+          {
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合22-59岁要求",
+              "最高额度100万充分覆盖申请区间",
+              "利率3%-6.5%较低",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限4次）、近半年逾期次数（上限0次）、近2个月查询次数（上限5次）、负债总额（100万）、在贷机构数（上限5）、客群身份"
+            ]
+          },
+          {
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合22-60岁要求",
+              "最高额度100万充分覆盖申请区间",
+              "利率3%-6.8%较低",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限6次）、近1年逾期次数（上限2次）、近3个月查询次数（上限6次）、在贷机构数（上限4）、非银机构数（上限3）、信用卡使用率（上限80%）、客群身份"
+            ]
+          },
+          {
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合22-62岁要求",
+              "最高额度100万充分覆盖申请区间",
+              "利率3%-6.2%较低",
+              "优先推荐产品",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限6次）、近6个月查询次数（上限12次）、经营贷款笔数（上限0笔）、客群身份"
+            ]
+          },
+          {
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合18-59岁要求",
+              "最高额度50万覆盖申请区间",
+              "利率3%-12%区间较宽",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近5年逾期次数（上限12次）、近2年逾期次数（上限6次）、近3个月查询次数（上限8次）、信用贷余额（≤100万）、客群身份"
+            ]
+          },
+          {
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合22-60岁要求",
+              "最高额度30万刚好覆盖申请区间上限",
+              "利率3%-6.85%较低",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限6次）、近3个月查询次数（上限6次）、负债收入比（60%）、在贷机构数（上限5）、网贷笔数（上限2）、信用卡使用率（上限70%）、客群身份"
+            ]
+          },
+          {
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合20-65岁要求",
+              "最高额度30万刚好覆盖申请区间上限",
+              "客户工资银行为中国银行，可能符合代发工资客群",
+              "利率3.1%起较低",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限6次）、近3个月查询次数（上限10次）、负债总额（100万含本笔）、在贷机构数（上限8）、客群身份"
+            ]
+          },
+          {
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄29岁符合22-60岁要求",
+              "最高额度100万充分覆盖申请区间",
+              "利率3%-6.9%较低",
+              "待确认：地区限制、当前逾期、90天及以上逾期、近2年逾期次数（上限6次）、近6个月查询次数（上限10次）、近3个月查询次数（上限6次）、负债总额（100万）、在贷机构数（上限5）、信用卡使用率（上限80%）、客群身份"
+            ]
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C223",
+      "validation_target": {
+        "product_id": "BOS_CREDIT_SNED_SZ",
+        "bank_name": "苏州农村商业银行",
+        "product_name": "苏农e贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.048,
+        "repayment_method": "先息后本",
+        "source_bank_name": "江苏苏州农村商业银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 167.433,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_3216b420-27c0-9a60-a2d2-2deed3215c2e",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 21313,
+          "input_tokens_details": {
+            "cached_tokens": 12672
+          },
+          "output_tokens": 13069,
+          "output_tokens_details": {
+            "reasoning_tokens": 9595
+          },
+          "total_tokens": 34382,
+          "x_details": [
+            {
+              "input_tokens": 21313,
+              "output_tokens": 13069,
+              "output_tokens_details": {
+                "reasoning_tokens": 9595
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 12672
+              },
+              "total_tokens": 34382,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C223",
+        "evaluated_product_count": 12,
+        "eligible_count": 0,
+        "conditional_count": 12,
+        "ineligible_count": 0,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "客户为龙头/上市企业员工，匹配客群4（优质单位客户），单位性质和在职时长（3年以上≥6个月）均满足",
+              "客群4对公积金、社保、打卡工资均无额外要求，已知信息匹配度高",
+              "最高额度100万元完全覆盖客户11-30万需求，满足额度优先诉求",
+              "最长期限84个月，支持先息后本/等额本息/等额本金/随借随还，灵活性强",
+              "优先推荐产品，利率区间3.0%-6.0%具有竞争力"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "customer_type（允许的身份）",
+              "overdue_count_2y（近2年逾期累计逾期次数上限4次）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数上限10次）",
+              "credit_card_utilization（信用卡使用率上限0.8）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "客户为龙头/上市企业员工，匹配产品单位性质要求（行业龙头私企/上市公司）",
+              "在职时长3年以上满足满12个月要求，社保连续3年以上满足连续12个月要求",
+              "信用卡张数6张≤上限8张，已知条件通过",
+              "利率区间3.0%-3.4%为全部候选产品中最低，额度100万完全覆盖需求",
+              "优先推荐产品，最长期限84个月，还款方式灵活"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "customer_type（允许的身份-工薪族）",
+              "provident_fund_months（公积金要求连续12个月，客户月数未知）",
+              "overdue_count_2y（近2年逾期累计逾期次数上限6次）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数上限20次）",
+              "lending_institution_count（在贷机构数上限8）",
+              "online_loan_count（网贷笔数上限2）",
+              "credit_card_utilization（信用卡使用率上限0.7）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "客户为龙头/上市企业员工，匹配客群1（优质单位或白名单客户），单位性质满足",
+              "在职时长3年以上满足客群1满12个月要求，客群1对公积金、社保、打卡工资均无额外要求",
+              "最高额度100万元完全覆盖客户11-30万需求，满足额度优先诉求",
+              "优先推荐产品，利率区间3.0%-6.2%具有竞争力，支持多种还款方式",
+              "可线下加白准入，增加获批可能性"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "customer_type（允许的身份）",
+              "overdue_count_2y（近2年逾期累计逾期次数上限6次）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数上限12次）",
+              "business_loan_count（经营贷款笔数上限0）"
+            ]
+          }
+        ],
+        "evaluations": [
+          {
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-65岁范围内，产品类型匹配信用贷款",
+              "龙头/上市企业匹配单位性质要求，在职时长3年以上≥12个月满足",
+              "社保3年以上≥连续12个月满足，信用卡6张≤上限8张满足",
+              "城市、当前逾期、90天逾期、客群身份、公积金缴存月数、近2年逾期次数、近6个月查询次数、在贷机构数、网贷笔数、信用卡使用率均缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-54岁范围内，产品类型匹配",
+              "客户27岁本科学历可适用30周岁以下本科条件（在职3个月/社保3个月/公积金3个月/打卡3个月即可），已知在职3年以上、社保3年以上、打卡工资均满足",
+              "近1个月查询0次≤上限6次满足",
+              "最高额度60万覆盖11-30万需求，但利率区间3.5%-18.8%上限较高",
+              "城市、当前逾期、90天逾期、客群身份、近5年逾期次数缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在18-60岁范围内，产品类型匹配",
+              "龙头/上市企业匹配客群4（优质单位客户），单位性质满足，在职3年以上≥6个月满足",
+              "客群4对公积金、社保、打卡工资均无要求，已知信息匹配度高",
+              "最高额度100万完全覆盖需求，利率3.0%-6.0%有竞争力，期限84个月",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近6个月查询次数、信用卡使用率缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在18-65岁范围内，产品类型匹配",
+              "龙头/上市企业可匹配客群1（优质单位/白名单客户），在职3年以上≥3个月满足，社保3年以上≥连续3个月满足",
+              "客群1对公积金无要求，已知信息部分匹配",
+              "最高额度100万覆盖需求，利率3.0%-6.0%，期限84个月",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近半年逾期次数（要求0次）、近6个月查询次数、负债总额、在贷机构数缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-60岁范围内，产品类型匹配",
+              "客户本科、打卡工资12000-20000元满足客群3（本科及以上月收入≥5000）要求，在职3年以上≥6个月满足",
+              "最高额度仅20万元，仅部分覆盖客户11-30万需求（20-30万部分无法覆盖）",
+              "利率区间7.2%-22.8%为候选产品中最高，非优先推荐产品",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近3个月查询次数、负债收入比缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-59岁范围内，产品类型匹配",
+              "客户可匹配苏州本地工薪客群，在职3年以上满足，打卡工资12000-20000≥3000满足",
+              "社保3年以上满足连续缴存要求，但社保基数未知",
+              "最高额度100万覆盖需求，利率3.0%-6.5%，期限84个月",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近半年逾期次数（要求0次）、近2个月查询次数、负债总额、在贷机构数缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-60岁范围内，产品类型匹配",
+              "客户有公积金可匹配客群5（公积金缴存客户），在职3年以上≥12个月满足",
+              "最高额度100万覆盖需求，利率3.0%-6.8%，期限84个月",
+              "但在贷机构数上限4、非银机构数上限3、近3个月查询上限6等要求较严格，相关信息均缺失",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近1年逾期次数、近3个月查询次数、在贷机构数、非银机构数、信用卡使用率缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-62岁范围内，产品类型匹配",
+              "龙头/上市企业匹配客群1（优质单位或白名单客户），单位性质满足，在职3年以上≥12个月满足",
+              "客群1对公积金、社保、打卡工资均无要求，已知信息匹配度高",
+              "最高额度100万覆盖需求，利率3.0%-6.2%，优先推荐产品",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近6个月查询次数、经营贷款笔数（上限0）缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在18-59岁范围内，产品类型匹配",
+              "客户公积金基数4952元，龙头/上市企业属优质单位，满足优质单位月缴存基数≥4000元要求，但公积金连续缴存月数未知",
+              "在职3年以上≥12个月满足，最高额度50万覆盖11-30万需求",
+              "利率区间3.0%-12%上限较高，非优先推荐产品",
+              "城市、当前逾期、90天逾期、客群身份、近5年逾期次数、近2年逾期次数、近3个月查询次数、公积金缴存月数、信用贷余额缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-60岁范围内，产品类型匹配",
+              "客户社保3年以上可匹配客群5（社保缴存客户），在职3年以上≥6个月满足",
+              "最高额度30万覆盖11-30万需求，利率3.0%-6.85%，但期限仅36个月",
+              "在贷机构数上限5、网贷笔数上限2、信用卡使用率上限0.7等要求较严格，相关信息均缺失",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近3个月查询次数、负债收入比、在贷机构数、网贷笔数、信用卡使用率缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在20-65岁范围内，产品类型匹配",
+              "客户社保3年以上可匹配客群5（社保/个税缴存客户），龙头/上市企业属优质单位，在职满6个月即可满足",
+              "最高额度30万覆盖11-30万需求，利率3.1%起，但期限仅36个月",
+              "负债总额上限100万（含本笔）、在贷机构数上限8等要求，相关信息缺失",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近3个月查询次数、负债总额、在贷机构数缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄27岁在22-60岁范围内，产品类型匹配",
+              "龙头/上市企业匹配客群3（优质单位/白名单客户），单位性质满足，在职3年以上≥6个月满足，社保3年以上≥连续6个月满足",
+              "最高额度100万覆盖需求，利率3.0%-6.9%，期限60个月",
+              "禁止的公共记录包含失信和涉诉，客户public_records缺失",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近6个月查询次数、近3个月查询次数、负债总额、在贷机构数、信用卡使用率缺失，无法最终判定"
+            ]
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C129",
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 610000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 9,
+        "excluded_count": 3,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 176.547,
+      "top1_hit": false,
+      "top3_hit": true,
+      "target_rank": 3,
+      "response": {
+        "id": "resp_55a206a7-5f66-911a-95ee-5fa2da26bf61",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 18755,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 15412,
+          "output_tokens_details": {
+            "reasoning_tokens": 13107
+          },
+          "total_tokens": 34167,
+          "x_details": [
+            {
+              "input_tokens": 18755,
+              "output_tokens": 15412,
+              "output_tokens_details": {
+                "reasoning_tokens": 13107
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 34167,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C129",
+        "evaluated_product_count": 9,
+        "eligible_count": 0,
+        "conditional_count": 9,
+        "ineligible_count": 0,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "客户为机关事业单位优质单位员工，3年以上工龄，与融e借客群4（优质单位）匹配良好",
+              "最高额度100万元充分覆盖客户31-60万申请区间",
+              "利率区间3.0%-6.0%较优，最长期限84个月，还款方式灵活",
+              "优先推荐产品，已知条件匹配度高，待确认信息相对较少"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "customer_type（允许的身份）",
+              "overdue_count_2y（近2年逾期累计逾期次数上限）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数上限）",
+              "credit_card_utilization（信用卡使用率上限）",
+              "public_records（禁止的公共记录）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "客户为机关事业单位优质单位员工，3年以上工龄，与网捷贷客群1（优质单位或白名单）匹配良好",
+              "最高额度100万元充分覆盖客户31-60万申请区间",
+              "利率区间3.0%-6.2%较优，优先推荐产品",
+              "已知条件匹配度高，待确认信息数量较少（8项）"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "customer_type（允许的身份）",
+              "overdue_count_2y（近2年逾期累计逾期次数上限）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数上限）",
+              "business_loan_count（经营贷款笔数上限）",
+              "public_records（禁止的公共记录）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "客户为机关事业单位优质单位员工，3年以上工龄，社保3年以上，信用卡7张（≤8），与建易贷优质单位公积金客群匹配",
+              "公积金基数18300远超10000，符合线下加白条件，推荐申请",
+              "利率区间3.0%-3.4%为所有候选产品中最低，最长期限84个月",
+              "最高额度100万元充分覆盖客户31-60万申请区间，优先推荐产品"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "customer_type（允许的身份）",
+              "overdue_count_2y（近2年逾期累计逾期次数上限）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数上限）",
+              "lending_institution_count（在贷机构数上限）",
+              "online_loan_count（网贷笔数上限）",
+              "credit_card_utilization（信用卡使用率上限）",
+              "public_records（禁止的公共记录）"
+            ]
+          }
+        ],
+        "evaluations": [
+          {
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户为机关事业单位员工，3年以上工龄，公积金基数18300，社保3年以上，信用卡7张（≤8），已知条件与优质单位公积金客群匹配良好",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近6个月查询次数、在贷机构数、网贷笔数、信用卡使用率、公共记录等信息缺失，无法最终确认准入"
+            ]
+          },
+          {
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户有房（按揭房），本科31岁，社保3年以上，打卡工资，近1个月查询1次（≤6），已知条件与诚易贷多客群匹配",
+              "城市、当前逾期、90天逾期、近5年逾期次数、客群身份、公积金缴存月数、公共记录等信息缺失",
+              "最高额度60万仅覆盖申请区间上限，利率区间较宽（3.5%-18.8%）"
+            ]
+          },
+          {
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户为机关事业单位优质单位员工，3年以上工龄，社保3年以上，已知条件与融e借客群4（优质单位）匹配良好",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近6个月查询次数、信用卡使用率、公共记录等信息缺失"
+            ]
+          },
+          {
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户为机关事业单位优质单位员工，3年以上工龄，社保3年以上，已知条件与邮享贷客群1（优质单位/白名单）匹配",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近半年逾期次数、近6个月查询次数、负债总额、在贷机构数、公共记录等信息缺失"
+            ]
+          },
+          {
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户3年以上工龄，打卡工资8000-12000（≥3000），已知条件与苏农e贷基本匹配",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近半年逾期次数、近2个月查询次数、负债总额、在贷机构数、公共记录等信息缺失"
+            ]
+          },
+          {
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户有按揭房，3年以上工龄，已知条件可能与闪电贷客群5（公积金缴存）或客群7（他行房贷）匹配",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近1年逾期次数、近3个月查询次数、在贷机构数、非银机构数、信用卡使用率、公共记录等信息缺失较多"
+            ]
+          },
+          {
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户为机关事业单位优质单位员工，3年以上工龄，已知条件与网捷贷客群1（优质单位或白名单）匹配良好",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近6个月查询次数、经营贷款笔数、公共记录等信息缺失"
+            ]
+          },
+          {
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户3年以上工龄，打卡工资8000-12000（≥5000），公积金基数18300，已知条件与你好e贷客群1/2匹配",
+              "城市、当前逾期、90天逾期、近5年逾期次数、客群身份、近2年逾期次数、近3个月查询次数、负债总额、公积金缴存月数、公共记录等信息缺失",
+              "最高额度50万仅部分覆盖客户申请区间（31-60万），额度匹配度不足"
+            ]
+          },
+          {
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "客户为机关事业单位优质单位员工，3年以上工龄，社保3年以上，已知条件与浦闪贷客群3（优质单位/白名单）匹配",
+              "城市、当前逾期、90天逾期、客群身份、近2年逾期次数、近6个月查询次数、近3个月查询次数、负债总额、在贷机构数、信用卡使用率、公共记录等信息缺失较多"
+            ]
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C197",
+      "validation_target": {
+        "product_id": "CCB_CREDIT_KD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "快贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.03,
+        "repayment_method": "等额本息",
+        "source_bank_name": "中国建设银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 83.178,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_0265cc8c-6fcf-98f3-93b8-293623d617cc",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 20094,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 7443,
+          "output_tokens_details": {
+            "reasoning_tokens": 4859
+          },
+          "total_tokens": 27537,
+          "x_details": [
+            {
+              "input_tokens": 20094,
+              "output_tokens": 7443,
+              "output_tokens_details": {
+                "reasoning_tokens": 4859
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 27537,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C197",
+        "evaluated_product_count": 11,
+        "eligible_count": 0,
+        "conditional_count": 11,
+        "ineligible_count": 0,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率最低（3.0%-3.4%），符合客户利率优先需求",
+              "优先推荐产品，审批效率可能更高",
+              "客户单位性质（龙头/上市企业）符合优质单位要求",
+              "在职时长3年以上满足12个月要求",
+              "社保连续缴存3年以上满足12个月要求",
+              "工资代发行为建行，有辅助优势",
+              "信用卡张数6张满足≤8张要求"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（当前逾期状态）",
+              "has_90_day_overdue（90天及以上逾期）",
+              "customer_type（客群身份）",
+              "overdue_count_2y（近2年逾期次数）",
+              "loan_inquiries_6m（近6个月查询次数）",
+              "lending_institution_count（在贷机构数）",
+              "online_loan_count（网贷笔数）",
+              "credit_card_utilization（信用卡使用率）",
+              "provident_fund_months（公积金连续缴存月数）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率较低（3.0%-6.0%），符合客户利率优先需求",
+              "优先推荐产品",
+              "客户可通过客群4（优质单位客户）准入",
+              "单位性质（龙头/上市企业）符合优质单位要求",
+              "在职时长3年以上满足6个月要求",
+              "客群4无公积金硬性要求，规避客户公积金基数2700元不足的问题"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（当前逾期状态）",
+              "has_90_day_overdue（90天及以上逾期）",
+              "customer_type（客群身份）",
+              "overdue_count_2y（近2年逾期次数）",
+              "loan_inquiries_6m（近6个月查询次数）",
+              "credit_card_utilization（信用卡使用率）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率较低（3.0%-6.0%），符合客户利率优先需求",
+              "优先推荐产品",
+              "客户可通过客群1（优质单位/白名单客户）准入",
+              "单位性质（龙头/上市企业）符合优质单位要求",
+              "在职时长3年以上满足3个月要求（客群1仅需3个月）",
+              "社保连续缴存3年以上满足3个月要求",
+              "客群1无公积金硬性要求"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（当前逾期状态）",
+              "has_90_day_overdue（90天及以上逾期）",
+              "customer_type（客群身份）",
+              "overdue_count_2y（近2年逾期次数）",
+              "overdue_count_6m（近半年逾期次数）",
+              "loan_inquiries_6m（近6个月查询次数）",
+              "total_non_mortgage_car_debt（负债总额）",
+              "lending_institution_count（在贷机构数）"
+            ]
+          }
+        ],
+        "evaluations": [
+          {
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合22-65岁要求",
+              "单位性质（龙头/上市企业）符合优质单位要求",
+              "在职时长3年以上满足12个月要求",
+              "社保连续缴存3年以上满足12个月要求",
+              "信用卡张数6张满足≤8张要求",
+              "地区、逾期记录、查询次数、在贷机构、网贷笔数、信用卡使用率、公积金连续缴存月数等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合18-60岁要求",
+              "可通过客群4（优质单位客户）准入，单位性质符合要求",
+              "在职时长3年以上满足6个月要求",
+              "客群4无公积金要求，规避基数不足问题",
+              "地区、逾期记录、查询次数、信用卡使用率等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合18-65岁要求",
+              "可通过客群1（优质单位/白名单客户）准入，单位性质符合要求",
+              "在职时长3年以上满足3个月要求",
+              "社保连续缴存3年以上满足3个月要求",
+              "客群1无公积金硬性要求",
+              "地区、逾期记录、查询次数、负债总额、在贷机构数等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合22-60岁要求",
+              "可通过客群1（社保缴存客户）准入",
+              "在职时长3年以上满足6个月要求",
+              "社保连续缴存3年以上满足6个月要求",
+              "利率较高（7.2%-22.8%），不符合客户利率优先需求",
+              "地区、逾期记录、查询次数、负债收入比等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合22-59岁要求",
+              "在职时长3年以上满足要求",
+              "收入范围5000-8000元满足≥3000元要求",
+              "社保基数信息缺失，无法判断是否满足≥4000元要求",
+              "地区、逾期记录、查询次数、负债总额、在贷机构数等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合22-60岁要求",
+              "可通过客群5（公积金缴存客户）准入",
+              "在职时长3年以上满足12个月要求",
+              "地区、逾期记录、查询次数、在贷机构数、非银机构数、信用卡使用率等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合22-62岁要求",
+              "优先推荐产品",
+              "可通过客群1（优质单位或白名单客户）准入，单位性质符合要求",
+              "在职时长3年以上满足12个月要求",
+              "地区、逾期记录、查询次数、经营贷款笔数等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合18-59岁要求",
+              "在职时长3年以上满足12个月要求",
+              "公积金基数2700元低于优质单位4000元和普通单位5000元要求，客群1不符合",
+              "可尝试客群2（打卡工资或个税客户），但连续缴存月数信息缺失",
+              "地区、逾期记录、查询次数、负债总额等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合22-60岁要求",
+              "可通过客群4（公积金缴存客户）准入",
+              "在职时长3年以上满足6个月要求",
+              "公积金连续缴存月数缺失，无法判断是否满足6个月要求",
+              "地区、逾期记录、查询次数、负债收入比、在贷机构数、网贷笔数、信用卡使用率等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合20-65岁要求",
+              "可通过客群4（公积金缴存客户）准入",
+              "在职时长3年以上满足优质单位6个月要求",
+              "公积金连续缴存月数缺失，无法判断是否满足6个月要求",
+              "地区、逾期记录、查询次数、负债总额、在贷机构数等信息缺失，无法完全判断"
+            ]
+          },
+          {
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄55岁符合22-60岁要求",
+              "可通过客群3（优质单位/白名单客户）准入，单位性质符合要求",
+              "在职时长3年以上满足6个月要求",
+              "客群3无公积金和社保硬性要求",
+              "地区、逾期记录、查询次数、负债总额、在贷机构数、信用卡使用率等信息缺失，无法完全判断"
+            ]
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C001",
+      "validation_target": {
+        "product_id": "CMB_CREDIT_SDD_SZ",
+        "bank_name": "招商银行",
+        "product_name": "闪电贷",
+        "approved_amount": 180000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "招商银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 101.175,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_1db18673-8a7d-9257-b5cc-7c71be36137b",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 20652,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 7175,
+          "output_tokens_details": {
+            "reasoning_tokens": 3844
+          },
+          "total_tokens": 27827,
+          "x_details": [
+            {
+              "input_tokens": 20652,
+              "output_tokens": 7175,
+              "output_tokens_details": {
+                "reasoning_tokens": 3844
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 27827,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C001",
+        "evaluated_product_count": 11,
+        "eligible_count": 0,
+        "conditional_count": 11,
+        "ineligible_count": 0,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "最低年利率3.0%，在候选产品中最低档，匹配客户利率优先需求",
+              "最高额度100万，完全覆盖客户11-30万申请区间",
+              "最长期限84个月，支持先息后本/等额本息/等额本金/随借随还，灵活性高",
+              "客户年龄35岁在18-60范围内，打卡工资缴个税，社保3年以上，重点扶持类企业在职3年以上，可能符合客群4（优质单位）或客群5（公积金缴存）"
+            ],
+            "missing_information": [
+              "city（地区限制：需确认苏州）",
+              "customer_type（工薪族身份确认）",
+              "current_overdue（当前逾期状态）",
+              "has_90_day_overdue（90天及以上逾期记录）",
+              "overdue_count_2y（近2年逾期次数，上限4次）",
+              "loan_inquiries_6m（近6个月查询次数，上限10次）",
+              "credit_card_utilization（信用卡使用率，上限80%）",
+              "公司是否属于工行优质单位（重点扶持类企业是否被认定为高新技术企业/专精特新小巨人等）",
+              "provident_fund_months（公积金缴存月数，客群5需连续12个月以上）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "优先推荐产品，最低年利率3.0%，利率竞争力强",
+              "最高额度100万，完全覆盖客户11-30万申请区间",
+              "支持先息后本/等额本息/等额本金/随借随还，期限最长60个月",
+              "客户社保3年以上、打卡工资缴个税、重点扶持类企业在职3年以上，可能符合客群1（优质单位白名单）或客群2（公积金缴存）",
+              "备注支持线下加白准入，增加获批可能性"
+            ],
+            "missing_information": [
+              "city（地区限制：需确认苏州）",
+              "customer_type（工薪族/企业主身份确认）",
+              "current_overdue（当前逾期状态）",
+              "has_90_day_overdue（90天及以上逾期记录）",
+              "overdue_count_2y（近2年逾期次数，上限6次）",
+              "loan_inquiries_6m（近6个月查询次数，上限12次）",
+              "business_loan_count（经营贷款笔数，上限0）",
+              "公司是否属于农行优质单位或白名单",
+              "provident_fund_months（公积金缴存月数，客群2普通单位需24个月以上）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "优先推荐产品，最低年利率3.0%，与工行并列最低",
+              "最高额度100万，完全覆盖客户11-30万申请区间",
+              "最长期限84个月，还款方式灵活（先息后本/等额本息/等额本金/随借随还）",
+              "客户社保3年以上（≥36个月），满足客群3普通单位社保连续缴存24个月以上要求",
+              "客户年龄35岁在18-65范围内，打卡工资缴个税"
+            ],
+            "missing_information": [
+              "city（地区限制：需确认苏州）",
+              "customer_type（工薪族身份确认）",
+              "current_overdue（当前逾期状态）",
+              "has_90_day_overdue（90天及以上逾期记录）",
+              "overdue_count_2y（近2年逾期次数，上限6次）",
+              "overdue_count_6m（近半年逾期次数，上限0次）",
+              "loan_inquiries_6m（近6个月查询次数，上限9次）",
+              "lending_institution_count（在贷机构数，上限5）",
+              "total_non_mortgage_car_debt（负债总额，普通单位≤80万/优质单位≤150万）"
+            ]
+          }
+        ],
+        "evaluations": [
+          {
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在22-54范围内，产品类型信用贷款匹配",
+              "最高额度60万覆盖11-30万申请区间",
+              "客户社保3年以上满足客群1社保要求，打卡工资满足客群3要求",
+              "优先推荐产品，但最低年利率3.5%高于其他候选产品的3.0%",
+              "待确认：城市（苏州）、客群身份、当前逾期、90天逾期、近5年逾期次数（上限12次）"
+            ]
+          },
+          {
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在18-60范围内，产品类型匹配，最高额度100万完全覆盖",
+              "最低年利率3.0%为候选最低档，期限84个月最长",
+              "客户重点扶持类企业可能符合客群4（优质单位），或公积金缴存满足客群5",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限4次）、近6个月查询（上限10次）、信用卡使用率（上限80%）、公司是否属工行认定的优质单位"
+            ]
+          },
+          {
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在18-65范围内，产品类型匹配，最高额度100万完全覆盖",
+              "优先推荐产品，最低年利率3.0%，期限84个月",
+              "客户社保3年以上满足客群3（普通单位社保连续缴存24个月以上）",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限6次）、近半年逾期（上限0次）、近6个月查询（上限9次）、在贷机构数（上限5）、负债总额"
+            ]
+          },
+          {
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在22-60范围内，产品类型匹配",
+              "最高额度20万仅部分覆盖客户11-30万申请区间（无法满额30万）",
+              "最低年利率7.2%显著高于其他候选产品，不符合客户利率优先需求",
+              "客户社保3年以上满足客群1要求，在职3年以上满足6个月要求",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限6次）、近3个月查询（上限13次）、负债收入比"
+            ]
+          },
+          {
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在22-59范围内，产品类型匹配，最高额度100万覆盖",
+              "最低年利率3.0%，但近2年逾期上限仅4次（较严格），近半年逾期上限0次",
+              "近2个月查询上限5次，客户该字段缺失",
+              "客户社保3年以上、在职3年以上满足普通单位要求",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限4次）、近半年逾期（上限0次）、近2个月查询（上限5次）、在贷机构数（上限5）、负债总额（上限100万）"
+            ]
+          },
+          {
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在22-60范围内，产品类型匹配，最高额度100万覆盖",
+              "最低年利率3.0%，但近1年逾期上限2次、近3个月查询上限6次、在贷机构数上限4、非银机构数上限3等限制较多",
+              "客户工资行平安银行非招行代发，需确认是否属于其他客群（公积金/他行房贷等）",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限6次）、近1年逾期（上限2次）、近3个月查询（上限6次）、在贷机构数（上限4）、非银机构数（上限3）、信用卡使用率（上限80%）"
+            ]
+          },
+          {
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在22-62范围内，产品类型匹配，最高额度100万完全覆盖",
+              "优先推荐产品，最低年利率3.0%，支持线下加白准入",
+              "客户重点扶持类企业可能符合客群1（优质单位白名单），或公积金缴存满足客群2",
+              "经营贷款笔数上限0，客户该字段缺失需确认",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限6次）、近6个月查询（上限12次）、经营贷款笔数（上限0）、公司是否属农行优质单位"
+            ]
+          },
+          {
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在18-59范围内，产品类型匹配，最高额度50万覆盖11-30万",
+              "最低年利率3.0%，但最高年利率12%波动较大",
+              "客户公积金缴存月数缺失，客群1需连续12个月以上；打卡工资满足客群2条件但需确认连续12个月",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近5年逾期（上限12次）、近2年逾期（上限6次）、近3个月查询（上限8次）、公积金缴存月数、信用贷余额（上限100万）"
+            ]
+          },
+          {
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在22-60范围内，产品类型匹配，最高额度30万刚好覆盖申请区间上限",
+              "最低年利率3.0%，但限制条件多：近3个月查询上限6次、在贷机构数上限5、网贷笔数上限2、信用卡使用率上限70%",
+              "客户社保3年以上满足客群5要求，但公积金月数缺失影响客群4判断",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限6次）、近3个月查询（上限6次）、在贷机构数（上限5）、网贷笔数（上限2）、信用卡使用率（上限70%）、负债收入比（60%）"
+            ]
+          },
+          {
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在20-65范围内，产品类型匹配，最高额度30万覆盖申请区间",
+              "最低年利率3.1%略高于3.0%档，期限36个月较短",
+              "客户社保3年以上可能满足客群5（社保/个税），但需确认单位性质对应的缴存时长要求",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限6次）、近3个月查询（上限10次）、在贷机构数（上限8）、负债总额（上限100万含本笔）"
+            ]
+          },
+          {
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄35岁在22-60范围内，产品类型匹配，最高额度100万完全覆盖",
+              "最低年利率3.0%，但禁止公共记录包含失信和涉诉（比其他产品更严格）",
+              "客户社保3年以上满足客群2（普通单位连续缴存12个月以上）",
+              "待确认：城市、客群身份、当前逾期、90天逾期、近2年逾期（上限6次）、近6个月查询（上限10次）、近3个月查询（上限6次）、在贷机构数（上限5）、信用卡使用率（上限80%）、负债总额（上限100万）、公共记录（失信/涉诉）"
+            ]
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C071",
+      "validation_target": {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "bank_name": "中国工商银行",
+        "product_name": "融e借",
+        "approved_amount": 300000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本,上海浦东发展银行",
+        "source_bank_name": "中国工商银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 6,
+        "excluded_count": 6,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 90.48,
+      "top1_hit": true,
+      "top3_hit": true,
+      "target_rank": 1,
+      "response": {
+        "id": "resp_d4665972-f30f-99b7-ae3b-ae6262276065",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 16215,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 7431,
+          "output_tokens_details": {
+            "reasoning_tokens": 5250
+          },
+          "total_tokens": 23646,
+          "x_details": [
+            {
+              "input_tokens": 16215,
+              "output_tokens": 7431,
+              "output_tokens_details": {
+                "reasoning_tokens": 5250
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 23646,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C071",
+        "evaluated_product_count": 6,
+        "eligible_count": 0,
+        "conditional_count": 6,
+        "ineligible_count": 0,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "优先推荐产品，利率区间最低（3.0%-6.0%），期限最长84个月",
+              "客户为龙头/上市企业员工，在职3年以上，可匹配客群4（优质单位客户）",
+              "公积金基数31188元远超要求，打卡工资范围最低2万元满足客群1/4要求",
+              "最高额度100万元覆盖客户61-100万需求"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "overdue_count_2y（近2年逾期累计次数）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数）",
+              "credit_card_utilization（信用卡使用率）",
+              "customer_type（允许的身份）",
+              "public_records（禁止的公共记录）",
+              "是否存在南银法巴消费金融在贷或近1个月查询记录（备注规则）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "优先推荐产品，利率区间与融e借相同（3.0%-6.0%），期限84个月",
+              "客户龙头/上市企业、在职3年以上、社保3年以上，可匹配客群1（优质单位/白名单客户）",
+              "最高额度100万元覆盖客户61-100万需求"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "overdue_count_2y（近2年逾期累计次数）",
+              "overdue_count_6m（近半年逾期累计次数）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数）",
+              "total_non_mortgage_car_debt（负债总额）",
+              "lending_institution_count（在贷机构数）",
+              "customer_type（允许的身份）",
+              "public_records（禁止的公共记录）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "status": "conditional",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0%-6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "优先推荐产品，利率上限略高于前两款（6.2%），期限60个月",
+              "客户龙头/上市企业、在职3年以上，可匹配客群1（优质单位或白名单客户）",
+              "备注支持线下加白准入，审批灵活性较高",
+              "最高额度100万元覆盖客户61-100万需求"
+            ],
+            "missing_information": [
+              "city（地区限制）",
+              "current_overdue（是否禁止当前逾期）",
+              "has_90_day_overdue（是否禁止90天及以上逾期）",
+              "overdue_count_2y（近2年逾期累计次数）",
+              "loan_inquiries_6m（近6个月贷款审批查询次数）",
+              "business_loan_count（经营贷款笔数，产品上限为0）",
+              "customer_type（允许的身份）",
+              "public_records（禁止的公共记录）"
+            ]
+          }
+        ],
+        "evaluations": [
+          {
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄40岁在18-60范围内，产品类型信用贷款匹配",
+              "龙头/上市企业在职3年以上可匹配客群4（优质单位客户），公积金基数31188元满足要求",
+              "最高额度100万元覆盖61-100万需求",
+              "客户城市、当前逾期、90天逾期、近2年逾期次数、近6个月查询次数、信用卡使用率、客群身份、公共记录均缺失，无法最终判定",
+              "备注要求排除南银法巴消费金融在贷或近1个月查询记录，客户相关信息未知"
+            ]
+          },
+          {
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄40岁在18-65范围内，产品类型信用贷款匹配",
+              "龙头/上市企业在职3年以上、社保3年以上可匹配客群1（优质单位/白名单客户）",
+              "最高额度100万元覆盖61-100万需求",
+              "客户城市、当前逾期、90天逾期、近2年及近半年逾期次数、近6个月查询次数、负债总额、在贷机构数、客群身份、公共记录均缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄40岁在22-59范围内，产品类型信用贷款匹配",
+              "在职3年以上满足现单位在职时长要求，打卡工资范围最低2万元满足月均≥3000要求",
+              "最高额度100万元覆盖61-100万需求",
+              "客户城市、当前逾期、90天逾期、近2年及近半年逾期次数、近2个月查询次数、负债总额、在贷机构数、客群身份、公共记录、社保基数均缺失，无法最终判定",
+              "非优先推荐产品，利率上限6.5%高于前三款"
+            ]
+          },
+          {
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄40岁在22-60范围内，产品类型信用贷款匹配",
+              "客户有按揭房可尝试匹配客群7（他行房贷客户），但按揭还款时长未知",
+              "最高额度100万元覆盖61-100万需求",
+              "客户城市、当前逾期、90天逾期、近2年及近1年逾期次数、近3个月查询次数、在贷机构数（上限4）、非银机构数（上限3）、信用卡使用率、客群身份、公共记录均缺失，无法最终判定",
+              "非优先推荐产品，利率上限6.8%较高，在贷机构数上限4较为严格"
+            ]
+          },
+          {
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄40岁在22-62范围内，产品类型信用贷款匹配",
+              "龙头/上市企业在职3年以上可匹配客群1（优质单位或白名单客户）",
+              "最高额度100万元覆盖61-100万需求，备注支持线下加白准入",
+              "客户城市、当前逾期、90天逾期、近2年逾期次数、近6个月查询次数、经营贷款笔数（产品上限为0）、客群身份、公共记录均缺失，无法最终判定"
+            ]
+          },
+          {
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "status": "conditional",
+            "reasons": [
+              "年龄40岁在22-60范围内，产品类型信用贷款匹配",
+              "龙头/上市企业在职3年以上、社保3年以上可匹配客群3（优质单位/白名单客户）",
+              "最高额度100万元覆盖61-100万需求",
+              "客户城市、当前逾期、90天逾期、近2年逾期次数、近6个月及近3个月查询次数、负债总额、在贷机构数、信用卡使用率、客群身份、公共记录均缺失，无法最终判定",
+              "非优先推荐产品，利率上限6.9%最高，禁止公共记录包含失信和涉诉（更严格），期限仅60个月"
+            ]
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    }
+  ]
+}

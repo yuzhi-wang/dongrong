@@ -1,0 +1,2079 @@
+{
+  "run": {
+    "started_at": "2026-09-04T08:57:31+08:00",
+    "mode": "real",
+    "source_group": "validatable",
+    "selection": "explicit_customer_ids",
+    "sample_size": 11,
+    "seed": 20260903,
+    "model": "qwen3.7-max",
+    "api_base_url": "https://dashscope.aliyuncs.com",
+    "finished_at": "2026-09-04T09:13:25+08:00"
+  },
+  "summary": {
+    "case_count": 11,
+    "hard_filter": {
+      "target_retained_count": 11,
+      "false_negative_count": 0,
+      "target_recall": 1.0
+    },
+    "model": {
+      "completed_count": 11,
+      "failed_count": 0,
+      "not_exercised_count": 0,
+      "top1_hits": 4,
+      "top3_hits": 4,
+      "top1_accuracy_on_completed": 0.3636,
+      "recall_at_3_on_completed": 0.3636
+    },
+    "end_to_end": {
+      "top1_accuracy": 0.3636,
+      "recall_at_3": 0.3636
+    },
+    "usage": {
+      "input_tokens": 91937,
+      "output_tokens": 68906,
+      "total_tokens": 160843
+    },
+    "by_product": [
+      {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "product_name": "中银e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "BOS_CREDIT_SNED_SZ",
+        "product_name": "苏农e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "product_name": "建易贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 1,
+        "top3_hits": 1,
+        "end_to_end_top1_accuracy": 1.0,
+        "end_to_end_recall_at_3": 1.0
+      },
+      {
+        "product_id": "CCB_CREDIT_KD_SZ",
+        "product_name": "快贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "CMB_CREDIT_SDD_SZ",
+        "product_name": "闪电贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "product_name": "融e借",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 1,
+        "top3_hits": 1,
+        "end_to_end_top1_accuracy": 1.0,
+        "end_to_end_recall_at_3": 1.0
+      },
+      {
+        "product_id": "NJCB_CREDIT_NHED_SZ",
+        "product_name": "你好e贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "product_name": "诚易贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "PSBC_CREDIT_YXD_SZ",
+        "product_name": "邮享贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 1,
+        "top3_hits": 1,
+        "end_to_end_top1_accuracy": 1.0,
+        "end_to_end_recall_at_3": 1.0
+      },
+      {
+        "product_id": "SPDB_CREDIT_PSD_SZ",
+        "product_name": "浦闪贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 0,
+        "top3_hits": 0,
+        "end_to_end_top1_accuracy": 0.0,
+        "end_to_end_recall_at_3": 0.0
+      },
+      {
+        "product_id": "XYCF_CREDIT_XYXFD_SZ",
+        "product_name": "家庭综合消费贷",
+        "case_count": 1,
+        "target_retained_count": 1,
+        "completed_count": 1,
+        "top1_hits": 1,
+        "top3_hits": 1,
+        "end_to_end_top1_accuracy": 1.0,
+        "end_to_end_recall_at_3": 1.0
+      }
+    ]
+  },
+  "results": [
+    {
+      "customer_id": "C021",
+      "validation_target": {
+        "product_id": "BOC_CREDIT_ZYED_SZ",
+        "bank_name": "中国银行",
+        "product_name": "中银e贷",
+        "approved_amount": 200000,
+        "annual_rate": 0.034,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 99.895,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_d2026641-38c7-9748-b470-d3e29c6a7f9d",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 8980,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 6973,
+          "output_tokens_details": {
+            "reasoning_tokens": 5744
+          },
+          "total_tokens": 15953,
+          "x_details": [
+            {
+              "input_tokens": 8980,
+              "output_tokens": 6973,
+              "output_tokens_details": {
+                "reasoning_tokens": 5744
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 15953,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C021",
+        "ranked_product_count": 11,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 95,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "最高额度100万元，完整覆盖客户11-30万的申请区间且余量充足，符合额度优先原则。",
+              "客户社保连续缴存3年以上，明确满足该产品客群3（普通单位社保连续缴存24个月及以上）的要求。",
+              "最高年利率6.0%在百万额度候选产品中最低，利率成本具备明显优势。"
+            ],
+            "missing_information": [
+              "公积金连续缴存月数（虽社保已满足准入，但公积金具体月数未提供）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "match_score": 92,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "最高额度100万元，充分覆盖客户申请额度上限，额度余量大。",
+              "客户现单位在职3年以上且有公积金，满足客群2（普通单位公积金缴存满24个月）的准入条件。",
+              "最高年利率6.2%，在同类高额度产品中利率上限较低，还款压力相对较小。"
+            ],
+            "missing_information": [
+              "公积金连续缴存月数（仅知在职3年以上，具体公积金连续缴存月数未明确提供）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "bank_name": "上海浦东发展银行",
+            "product_name": "浦闪贷",
+            "match_score": 89,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.9%",
+            "term_months_max": 60,
+            "reasons": [
+              "最高额度100万元，完整覆盖客户30万的申请上限需求。",
+              "客户社保缴存3年以上且打卡工资8000-12000元，满足客群2（社保/个税连续6个月及以上且金额≥5000元）的要求。",
+              "支持先息后本、等额本息及随借随还等多种还款方式，契合客户3天内用款的紧迫性及灵活还款需求。"
+            ],
+            "missing_information": [
+              "具体社保缴存基数及个税精确金额（仅知收入区间，未提供精确基数）"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 92
+          },
+          {
+            "rank": 3,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 89
+          },
+          {
+            "rank": 4,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 5,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 80
+          },
+          {
+            "rank": 6,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 75
+          },
+          {
+            "rank": 7,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 70
+          },
+          {
+            "rank": 8,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 68
+          },
+          {
+            "rank": 9,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 10,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 50
+          },
+          {
+            "rank": 11,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 40
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C223",
+      "validation_target": {
+        "product_id": "BOS_CREDIT_SNED_SZ",
+        "bank_name": "苏州农村商业银行",
+        "product_name": "苏农e贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.048,
+        "repayment_method": "先息后本",
+        "source_bank_name": "江苏苏州农村商业银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 117.671,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_88acd27a-100c-9cb3-b62c-a975663df8d7",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 9337,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 7200,
+          "output_tokens_details": {
+            "reasoning_tokens": 5805
+          },
+          "total_tokens": 16537,
+          "x_details": [
+            {
+              "input_tokens": 9337,
+              "output_tokens": 7200,
+              "output_tokens_details": {
+                "reasoning_tokens": 5805
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 16537,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C223",
+        "ranked_product_count": 12,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "match_score": 95,
+            "confidence": "medium",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度100万完整覆盖客户11-30万需求，且最高年利率仅3.4%，为全场最低，期限长达84个月。",
+              "客户单位为龙头/上市企业，符合产品优质单位性质要求，在职3年以上满足满12个月要求。",
+              "客户有按揭房和打卡工资，综合资质优良，符合建行优质客群画像。"
+            ],
+            "missing_information": [
+              "公积金连续缴存月数（产品要求连续12个月，客户字段缺失）。",
+              "客户是否属于建行白名单制企业（产品要求白名单制）。",
+              "customer_type 字段未明确提供（虽具备打卡工资等工薪特征）。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 92,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度100万完整覆盖申请区间，期限84个月，最高年利率6.0%，支持多种还款方式。",
+              "客户属于龙头/上市企业，符合客群1优质单位要求，且社保缴存3年以上完美满足连续3个月的要求。",
+              "产品对优质单位客群无公积金硬性要求，规避了客户公积金月数缺失的问题，匹配确定性高。"
+            ],
+            "missing_information": [
+              "customer_type 字段未明确提供（虽具备打卡工资等工薪特征）。",
+              "公积金连续缴存月数（客群1无硬性要求，但补充可提升额度或利率）。",
+              "客户所在城市（部分银行产品有地域限制，客户城市缺失）。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 90,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度100万完整覆盖申请区间，期限84个月，利率区间3.0%-6.0%，支持随借随还等多种方式。",
+              "客户单位为龙头/上市企业，符合客群4优质单位要求，在职3年以上远超满6个月的标准。",
+              "客户具备打卡工资和社保公积金，综合还款能力良好，符合工行工薪族客群偏好。"
+            ],
+            "missing_information": [
+              "customer_type 字段未明确提供（虽具备打卡工资等工薪特征）。",
+              "客户所在城市（部分银行产品有地域限制，客户城市缺失）。",
+              "公积金连续缴存月数（若走客群5需连续12个月，走客群4则无要求）。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 92
+          },
+          {
+            "rank": 3,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 90
+          },
+          {
+            "rank": 4,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 5,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 82
+          },
+          {
+            "rank": 6,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 80
+          },
+          {
+            "rank": 7,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 75
+          },
+          {
+            "rank": 8,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 70
+          },
+          {
+            "rank": 9,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 68
+          },
+          {
+            "rank": 10,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 60
+          },
+          {
+            "rank": 11,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 58
+          },
+          {
+            "rank": 12,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 40
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C129",
+      "validation_target": {
+        "product_id": "CCB_CREDIT_JYD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "建易贷",
+        "approved_amount": 610000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国建设银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 9,
+        "excluded_count": 3,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 76.42,
+      "top1_hit": true,
+      "top3_hit": true,
+      "target_rank": 1,
+      "response": {
+        "id": "resp_dbd4a4e0-9a41-977c-9950-26fd605111a7",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 7553,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 5497,
+          "output_tokens_details": {
+            "reasoning_tokens": 4170
+          },
+          "total_tokens": 13050,
+          "x_details": [
+            {
+              "input_tokens": 7553,
+              "output_tokens": 5497,
+              "output_tokens_details": {
+                "reasoning_tokens": 4170
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 13050,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C129",
+        "ranked_product_count": 9,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "match_score": 95,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度最高100万元，完整覆盖客户31-60万元的申请区间，且最高年利率仅3.4%，为所有候选中利率上限最低，完美契合客户额度优先的需求。",
+              "客户工资代发银行为中国建设银行，且公积金基数高达18300元、单位为机关事业单位，高度契合该产品的建行代发及优质单位公积金客群要求。",
+              "最长期限达84个月，支持先息后本、随借随还等多种还款方式，充分满足客户长期限及灵活还款的潜在偏好。"
+            ],
+            "missing_information": [
+              "customer_type（客户身份类型）字段缺失，需确认是否明确为工薪族。",
+              "公积金连续缴存的具体月数未明确提供（仅知社保3年以上及有公积金）。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 90,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度最高100万元，完整覆盖客户申请区间，最高年利率6.0%，期限长达84个月，额度与期限表现优异。",
+              "客户为机关事业单位员工，公积金连续缴存3年以上且基数18300元，同时满足该产品的优质单位客群（客群4）与公积金缴存客群（客群5）双重标准。",
+              "支持先息后本、等额本息、等额本金及随借随还，还款方式丰富，匹配客户薪资收入还款来源的灵活性。"
+            ],
+            "missing_information": [
+              "customer_type（客户身份类型）字段缺失，需确认是否明确为工薪族。",
+              "客户非工行代发且无工行存量房贷记录，需确认能否仅凭优质单位或公积金资质顺利进件获批高额度。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 88,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度最高100万元，完整覆盖客户31-60万元的申请区间，最高年利率6.0%，期限84个月，整体条件优越。",
+              "客户机关事业单位背景及3年以上社保缴存记录，完美匹配该产品的优质单位/白名单客群（客群1），且在职时长要求仅需满3个月，客户3年以上远超门槛。",
+              "对公积金无硬性要求（客群1），客户虽有公积金但具体月数缺失也不影响该客群通道的准入判断。"
+            ],
+            "missing_information": [
+              "customer_type（客户身份类型）字段缺失，需确认是否明确为工薪族。",
+              "公积金连续缴存具体月数未明确提供，若走普通单位公积金客群（客群2）需确认是否满24个月。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 90
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 4,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 5,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 82
+          },
+          {
+            "rank": 6,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 78
+          },
+          {
+            "rank": 7,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 70
+          },
+          {
+            "rank": 8,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 60
+          },
+          {
+            "rank": 9,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 50
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C197",
+      "validation_target": {
+        "product_id": "CCB_CREDIT_KD_SZ",
+        "bank_name": "中国建设银行",
+        "product_name": "快贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.03,
+        "repayment_method": "等额本息",
+        "source_bank_name": "中国建设银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 97.5,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_09411725-7827-9aa3-839c-d3afeb679159",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 8489,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 6710,
+          "output_tokens_details": {
+            "reasoning_tokens": 5357
+          },
+          "total_tokens": 15199,
+          "x_details": [
+            {
+              "input_tokens": 8489,
+              "output_tokens": 6710,
+              "output_tokens_details": {
+                "reasoning_tokens": 5357
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 15199,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C197",
+        "ranked_product_count": 11,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "match_score": 95,
+            "confidence": "medium",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率最优：最高年利率仅3.4%，在所有候选中最低，完美契合客户“利率”优先的需求。",
+              "客群与单位匹配：客户为龙头/上市企业员工，在职3年以上，符合优质单位要求；且工资代发行为建行，对申请该行白名单产品有辅助优势。",
+              "额度与期限：最高额度100万，最长期限84个月，充分覆盖客户0-10万的申请需求及长期限偏好。"
+            ],
+            "missing_information": [
+              "公积金连续缴存月数（产品要求连续12个月，客户仅有公积金但月数未知）。",
+              "客户具体所在城市（部分银行产品有地域限制，可能影响最终审批）。",
+              "客户年龄55岁接近常规退休节点，可能影响最终获批期限。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 88,
+            "confidence": "medium",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率较优：最高年利率6.0%，最低3.0%，在候选中处于第二梯队，符合利率优先原则。",
+              "客群匹配：客户为龙头/上市企业员工，符合“客群4：优质单位客户”要求，且在职3年以上远超6个月的门槛。",
+              "额度覆盖：最高额度100万，完全覆盖客户0-10万的申请区间。"
+            ],
+            "missing_information": [
+              "客户明确的城市信息（无法确认是否在工行展业区域）。",
+              "客户近一个月是否有南银法巴消费金融的查询或贷款记录（产品备注明确排斥该机构）。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 86,
+            "confidence": "medium",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率表现：最高年利率6.0%，最低3.0%，与工行融e借并列，利率表现优秀。",
+              "客群与资质匹配：符合“客群1：优质单位/白名单客户”，在职3年以上（要求满3个月），社保连续3年以上（要求连续3个月），资质完全达标。",
+              "还款方式灵活：支持先息后本、等额本息等多种方式，且期限长达84个月。"
+            ],
+            "missing_information": [
+              "客户所在城市信息。",
+              "客户具体的公积金连续缴存月数（虽走优质单位客群不强制要求公积金，但若有可提升资质）。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 86
+          },
+          {
+            "rank": 4,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 84
+          },
+          {
+            "rank": 5,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 82
+          },
+          {
+            "rank": 6,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 80
+          },
+          {
+            "rank": 7,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 78
+          },
+          {
+            "rank": 8,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 76
+          },
+          {
+            "rank": 9,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 72
+          },
+          {
+            "rank": 10,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 11,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 50
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C001",
+      "validation_target": {
+        "product_id": "CMB_CREDIT_SDD_SZ",
+        "bank_name": "招商银行",
+        "product_name": "闪电贷",
+        "approved_amount": 180000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本",
+        "source_bank_name": "招商银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 11,
+        "excluded_count": 1,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 87.672,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_1c3037b9-bf23-98ac-8bc7-5b04c8c15515",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 8949,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 6747,
+          "output_tokens_details": {
+            "reasoning_tokens": 5401
+          },
+          "total_tokens": 15696,
+          "x_details": [
+            {
+              "input_tokens": 8949,
+              "output_tokens": 6747,
+              "output_tokens_details": {
+                "reasoning_tokens": 5401
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 15696,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C001",
+        "ranked_product_count": 11,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 95,
+            "confidence": "high",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率优先：最高年利率6.0%为候选中最低水平，且最低年利率3.0%，完美契合客户对利率的优先关注。",
+              "客群匹配：客户单位为“重点扶持类企业”，符合该产品“客群4：优质单位客户（含重点扶持类企业）”要求，且在职3年以上远超6个月要求。",
+              "额度与期限：最高额度100万完整覆盖客户11-30万的申请区间，最长期限84个月提供灵活还款选择。"
+            ],
+            "missing_information": [
+              "客户未提供具体城市信息，无法确认是否在工行服务区域内。",
+              "客户未提供公积金具体缴存基数和月数，若走客群5需确认，但走客群4已满足基本准入。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 94,
+            "confidence": "high",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "利率优先：最高年利率6.0%与最低年利率3.0%均处于候选最低梯队，高度符合客户利率优先需求。",
+              "客群匹配：客户社保连续缴存3年以上，符合“客群3：普通单位社保/个税客户”连续缴存24个月及以上的要求。",
+              "额度覆盖：最高额度100万充分覆盖11-30万的申请需求，期限长达84个月。"
+            ],
+            "missing_information": [
+              "客户城市未知，无法确认邮储银行当地网点及准入政策。",
+              "客户具体社保缴费基数未提供，可能影响最终审批额度。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "bank_name": "中国农业银行",
+            "product_name": "网捷贷",
+            "match_score": 92,
+            "confidence": "high",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.2%",
+            "term_months_max": 60,
+            "reasons": [
+              "利率优势：最高年利率6.2%在候选中排名第三低，最低年利率3.0%，利率成本极具竞争力。",
+              "客群匹配：客户单位为“重点扶持类企业”，符合“客群1：优质单位或白名单客户”要求，且在职3年以上满足满12个月的条件。",
+              "额度满足：最高额度100万完全覆盖客户11-30万的申请区间。"
+            ],
+            "missing_information": [
+              "客户未提供公积金具体缴存月数和基数，若按客群2申请需进一步确认。",
+              "客户城市未知，无法确认农行当地白名单或准入细则。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 94
+          },
+          {
+            "rank": 3,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 92
+          },
+          {
+            "rank": 4,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 5,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 6,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 84
+          },
+          {
+            "rank": 7,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 82
+          },
+          {
+            "rank": 8,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 78
+          },
+          {
+            "rank": 9,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 10,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 50
+          },
+          {
+            "rank": 11,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 40
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C071",
+      "validation_target": {
+        "product_id": "ICBC_CREDIT_REJ_SZ",
+        "bank_name": "中国工商银行",
+        "product_name": "融e借",
+        "approved_amount": 300000,
+        "annual_rate": 0.03,
+        "repayment_method": "先息后本,上海浦东发展银行",
+        "source_bank_name": "中国工商银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 6,
+        "excluded_count": 6,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 61.455,
+      "top1_hit": true,
+      "top3_hit": true,
+      "target_rank": 1,
+      "response": {
+        "id": "resp_e6999582-75e8-96e1-a739-d6611bd07bf5",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 5891,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 4261,
+          "output_tokens_details": {
+            "reasoning_tokens": 3180
+          },
+          "total_tokens": 10152,
+          "x_details": [
+            {
+              "input_tokens": 5891,
+              "output_tokens": 4261,
+              "output_tokens_details": {
+                "reasoning_tokens": 3180
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 10152,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C071",
+        "ranked_product_count": 6,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 98,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "产品最高额度100万元，完整覆盖客户61-100万元的申请区间，满足额度优先需求。",
+              "客户单位为龙头/上市企业，在职3年以上，完美匹配客群4（优质单位客户）要求。",
+              "最长期限84个月，且最高年利率6.0%在同类长期限产品中具备利率优势。"
+            ],
+            "missing_information": [
+              "客户未提供明确的customer_type字段，但根据打卡工资和社保公积金缴纳情况可推断为工薪族。",
+              "客户近期查询记录及负债明细缺失，无法确认是否存在备注中限制的“南银法巴消费金融”机构记录。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 96,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "最高额度100万元，充分满足客户61-100万元的额度优先需求。",
+              "客户属于龙头/上市企业员工，社保缴纳3年以上，高度匹配客群1（优质单位/白名单客户）的准入条件。",
+              "期限长达84个月，且利率区间与工行一致，还款方式灵活。"
+            ],
+            "missing_information": [
+              "客户未明确提供customer_type字段身份标识。",
+              "客户具体月收入金额缺失，仅提供大于2万的区间，可能影响最终额度核定。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "bank_name": "招商银行",
+            "product_name": "闪电贷",
+            "match_score": 92,
+            "confidence": "medium",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.8%",
+            "term_months_max": 84,
+            "reasons": [
+              "最高额度100万元，能够覆盖客户61-100万元的申请需求。",
+              "客户公积金基数高达31188元且在职3年以上，符合客群5（公积金缴存客户）的要求。",
+              "支持84个月长期限及多种还款方式，满足立刻用款的灵活性。"
+            ],
+            "missing_information": [
+              "客户未提供公积金连续缴存月数，无法完全确认是否满足公积金客群的连续缴存要求。",
+              "客户按揭房还款时长及房产所在地未知，无法确认是否满足客群7（他行房贷客户）的附加条件。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 98
+          },
+          {
+            "rank": 2,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 96
+          },
+          {
+            "rank": 3,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 92
+          },
+          {
+            "rank": 4,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 5,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 6,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 75
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C109",
+      "validation_target": {
+        "product_id": "NJCB_CREDIT_NHED_SZ",
+        "bank_name": "南京银行",
+        "product_name": "你好e贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.085,
+        "repayment_method": "先息后本",
+        "source_bank_name": "南京银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 98.664,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_85722430-43d1-91a3-83df-473f5315e757",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 9336,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 7178,
+          "output_tokens_details": {
+            "reasoning_tokens": 5785
+          },
+          "total_tokens": 16514,
+          "x_details": [
+            {
+              "input_tokens": 9336,
+              "output_tokens": 7178,
+              "output_tokens_details": {
+                "reasoning_tokens": 5785
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 16514,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C109",
+        "ranked_product_count": 12,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "bank_name": "上海浦东发展银行",
+            "product_name": "浦闪贷",
+            "match_score": 92,
+            "confidence": "medium",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.9%",
+            "term_months_max": 60,
+            "reasons": [
+              "额度优先：最高额度100万，完整覆盖客户11-30万的申请区间，且额度余量充足。",
+              "客群匹配：支持个税/打卡工资客群，客户打卡工资8000-12000元满足“连续6个月及以上，金额≥5000元/月”的要求。",
+              "在职要求宽松：现单位在职满6个月即可，对客户0-1年的在职时长非常友好，准入概率较高。"
+            ],
+            "missing_information": [
+              "现单位具体在职月数（需确认是否已满6个月）",
+              "打卡工资连续发放月数（需确认是否已满6个月）",
+              "社保具体缴存基数（若走社保客群需确认基数是否≥5000元）"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "快贷",
+            "match_score": 88,
+            "confidence": "high",
+            "amount_range": "最高30万元",
+            "annual_rate_range": "3.0% - 6.85%",
+            "term_months_max": 36,
+            "reasons": [
+              "额度覆盖：最高额度30万，刚好完整覆盖客户申请区间的上限（30万）。",
+              "社保匹配：支持社保缴存客群，要求连续缴存6个月，客户社保1-3年（12-36个月）完美满足。",
+              "在职要求宽松：现单位在职满6个月即可，对客户0-1年的在职时长容错率高。"
+            ],
+            "missing_information": [
+              "现单位具体在职月数（需确认是否已满6个月）",
+              "社保连续缴存的具体月数（需确认近期无断缴）",
+              "客户在建行的资产或代发情况（若有可进一步提升获批概率）"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "bank_name": "中国银行",
+            "product_name": "中银e贷",
+            "match_score": 82,
+            "confidence": "medium",
+            "amount_range": "最高30万元",
+            "annual_rate_range": "最低3.1%",
+            "term_months_max": 36,
+            "reasons": [
+              "额度覆盖：最高额度30万，能够覆盖客户申请区间的上限。",
+              "社保匹配：支持社保/个税客群，客户社保1-3年满足“连续缴存12个月及以上”的时间要求。",
+              "还款方式：支持先息后本和随借随还，契合客户“立刻”用款和灵活还款的潜在需求。"
+            ],
+            "missing_information": [
+              "现单位具体在职月数（普通单位通常要求满12个月，客户0-1年处于临界点）",
+              "社保连续缴存的具体月数（需确认是否达到12个月且无断缴）",
+              "产品最高年利率（公开信息未提供上限）"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 92
+          },
+          {
+            "rank": 2,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 3,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 82
+          },
+          {
+            "rank": 4,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 75
+          },
+          {
+            "rank": 5,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 72
+          },
+          {
+            "rank": 6,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 7,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 60
+          },
+          {
+            "rank": 8,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 55
+          },
+          {
+            "rank": 9,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 40
+          },
+          {
+            "rank": 10,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 35
+          },
+          {
+            "rank": 11,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 30
+          },
+          {
+            "rank": 12,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 25
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C115",
+      "validation_target": {
+        "product_id": "NYBF_CREDIT_CYD_SZ",
+        "bank_name": "南银法巴消费金融",
+        "product_name": "诚易贷",
+        "approved_amount": 100000,
+        "annual_rate": 0.14,
+        "repayment_method": "等额本息",
+        "source_bank_name": "南银法巴消费金融"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 68.471,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_799fe00b-15d9-9425-a80a-593ed1894095",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 9326,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 5371,
+          "output_tokens_details": {
+            "reasoning_tokens": 4012
+          },
+          "total_tokens": 14697,
+          "x_details": [
+            {
+              "input_tokens": 9326,
+              "output_tokens": 5371,
+              "output_tokens_details": {
+                "reasoning_tokens": 4012
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 14697,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C115",
+        "ranked_product_count": 12,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "match_score": 95,
+            "confidence": "medium",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度优先：最高额度100万，远超客户申请的11-30万区间，额度余量充足。",
+              "客群匹配：客户为机关事业单位，在职3年以上，符合产品优质单位及在职满12个月的要求。",
+              "利率与期限优势：最高年利率仅3.4%，为候选中最低，且最长期限达84个月，还款压力小。"
+            ],
+            "missing_information": [
+              "公积金连续缴存月数（产品要求连续12个月，客户有公积金且基数6661，但具体月数缺失）。",
+              "客户所在城市（确认是否在建行白名单覆盖区域）。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 92,
+            "confidence": "medium",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度优先：最高额度100万，完整覆盖客户11-30万的申请需求。",
+              "客群匹配：客户为机关事业单位且公积金基数6661，同时满足优质单位客群（在职满6个月）和公积金客群（基数≥5000）双重准入条件。",
+              "期限与还款：最长期限84个月，支持先息后本等多种还款方式，契合客户立刻用款及薪资还款偏好。"
+            ],
+            "missing_information": [
+              "公积金连续缴存月数（若走公积金客群需连续12个月）。",
+              "客户所在城市及具体单位是否在工行优质单位白名单内。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 90,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "额度优先：最高额度100万，充分覆盖客户最高30万的申请额度。",
+              "客群匹配：客户为机关事业单位，在职3年以上且社保缴存3年以上，完美符合优质单位客群（在职满3个月、社保连续3个月）的宽松要求。",
+              "利率与期限：最低年利率3.0%，最长期限84个月，综合资金成本与期限表现优异。"
+            ],
+            "missing_information": [
+              "客户所在城市（确认邮储银行当地网点及白名单政策）。",
+              "公积金连续缴存月数（虽可通过优质单位客群准入，但公积金信息完整度影响最终审批）。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 92
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 90
+          },
+          {
+            "rank": 4,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 5,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 6,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 83
+          },
+          {
+            "rank": 7,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 80
+          },
+          {
+            "rank": 8,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 75
+          },
+          {
+            "rank": 9,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 72
+          },
+          {
+            "rank": 10,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 11,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 62
+          },
+          {
+            "rank": 12,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 40
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C060",
+      "validation_target": {
+        "product_id": "PSBC_CREDIT_YXD_SZ",
+        "bank_name": "中国邮政储蓄银行",
+        "product_name": "邮享贷",
+        "approved_amount": 300000,
+        "annual_rate": 0.049,
+        "repayment_method": "先息后本",
+        "source_bank_name": "中国邮政储蓄银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 9,
+        "excluded_count": 3,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 75.598,
+      "top1_hit": true,
+      "top3_hit": true,
+      "target_rank": 1,
+      "response": {
+        "id": "resp_23ad61aa-5f97-9d8e-a94c-d608c3a3ff5c",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 7521,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 5987,
+          "output_tokens_details": {
+            "reasoning_tokens": 4810
+          },
+          "total_tokens": 13508,
+          "x_details": [
+            {
+              "input_tokens": 7521,
+              "output_tokens": 5987,
+              "output_tokens_details": {
+                "reasoning_tokens": 4810
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 13508,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C060",
+        "ranked_product_count": 9,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 95,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "最高额度100万元，完全覆盖客户31-60万元的申请区间，满足额度优先需求。",
+              "客户社保缴纳3年以上且打卡工资12000-20000元，完美匹配普通单位社保/个税客群（要求连续24个月）。",
+              "最长期限84个月，提供灵活的还款周期，支持随借随还等多种方式。"
+            ],
+            "missing_information": [
+              "公积金具体缴存月数和基数未提供（但不影响社保/个税客群准入）。",
+              "客户所在城市未提供，需确认是否在邮储银行服务范围内。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "bank_name": "上海浦东发展银行",
+            "product_name": "浦闪贷",
+            "match_score": 92,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.9%",
+            "term_months_max": 60,
+            "reasons": [
+              "最高额度100万元，充分覆盖客户31-60万元的额度需求。",
+              "客户打卡工资12000-20000元且社保缴纳3年以上，满足社保/个税客群连续12个月且金额≥5000元的要求。",
+              "支持先息后本、等额本息及随借随还，契合客户立刻用款的紧迫性。"
+            ],
+            "missing_information": [
+              "公积金具体缴存月数和基数未提供。",
+              "客户所在城市未提供，需确认是否在浦发银行服务范围内。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "bank_name": "招商银行",
+            "product_name": "闪电贷",
+            "match_score": 88,
+            "confidence": "medium",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.8%",
+            "term_months_max": 84,
+            "reasons": [
+              "最高额度100万元，完整覆盖客户31-60万元的申请区间。",
+              "客户具有公积金且在职3年以上，符合公积金缴存客群满12个月的要求。",
+              "最长期限84个月，还款方式多样，包含随借随还。"
+            ],
+            "missing_information": [
+              "公积金具体缴存月数未提供，需确认是否连续满12个月。",
+              "客户所在城市未提供，需确认房产及公积金是否在招行本地服务范围内。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 92
+          },
+          {
+            "rank": 3,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 4,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 5,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 80
+          },
+          {
+            "rank": 6,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 75
+          },
+          {
+            "rank": 7,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 72
+          },
+          {
+            "rank": 8,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 9,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 50
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C035",
+      "validation_target": {
+        "product_id": "SPDB_CREDIT_PSD_SZ",
+        "bank_name": "上海浦东发展银行",
+        "product_name": "浦闪贷",
+        "approved_amount": 230000,
+        "annual_rate": 0.033,
+        "repayment_method": "等额本息",
+        "source_bank_name": "上海浦东发展银行"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 12,
+        "excluded_count": 0,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 88.788,
+      "top1_hit": false,
+      "top3_hit": false,
+      "target_rank": null,
+      "response": {
+        "id": "resp_07240875-4f87-95f0-80af-53e692e62bb7",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 9306,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 6803,
+          "output_tokens_details": {
+            "reasoning_tokens": 5508
+          },
+          "total_tokens": 16109,
+          "x_details": [
+            {
+              "input_tokens": 9306,
+              "output_tokens": 6803,
+              "output_tokens_details": {
+                "reasoning_tokens": 5508
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 16109,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C035",
+        "ranked_product_count": 12,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "建易贷",
+            "match_score": 95,
+            "confidence": "medium",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 3.4%",
+            "term_months_max": 84,
+            "reasons": [
+              "期限最优：最长期限达84个月，完美契合客户“期限”优先的核心诉求。",
+              "利率极低：最高年利率仅3.4%，在同期限产品中具备显著利率优势。",
+              "单位匹配：客户为央企国企员工且在职3年以上，符合产品对优质单位及在职时长的要求。"
+            ],
+            "missing_information": [
+              "公积金连续缴存月份（产品要求连续12个月，客户具体月份未知）。",
+              "是否属于建行白名单或能否通过线下加白准入。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 90,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "期限匹配：最长期限84个月，满足客户对长周期的偏好。",
+              "客群契合：客户为央企国企员工，符合“优质单位客户”客群要求，且在职时长远超6个月门槛。",
+              "额度充足：最高额度100万元，完整覆盖客户11-30万元的申请区间。"
+            ],
+            "missing_information": [
+              "客户具体公积金缴存基数及月份（若走公积金客群需连续12个月且基数5000以上，但走优质单位客群则无此硬性要求）。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "bank_name": "中国邮政储蓄银行",
+            "product_name": "邮享贷",
+            "match_score": 88,
+            "confidence": "high",
+            "amount_range": "最高100万元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "期限匹配：最长期限84个月，符合客户期限优先偏好。",
+              "资质匹配：客户为央企国企，符合“优质单位”客群，且社保连续缴存3年以上，远超3个月的要求。",
+              "额度与还款：最高100万覆盖申请额度，支持先息后本、随借随还等多种灵活还款方式。"
+            ],
+            "missing_information": [
+              "客户是否属于邮储银行白名单单位。",
+              "公积金具体缴存情况（虽走优质单位客群对公积金无硬性要求，但有公积金可获更优条件）。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 90
+          },
+          {
+            "rank": 3,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 88
+          },
+          {
+            "rank": 4,
+            "product_id": "CMB_CREDIT_SDD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 5,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 80
+          },
+          {
+            "rank": 6,
+            "product_id": "ABC_CREDIT_WJD_SZ",
+            "match_score": 75
+          },
+          {
+            "rank": 7,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 72
+          },
+          {
+            "rank": 8,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 68
+          },
+          {
+            "rank": 9,
+            "product_id": "NYBF_CREDIT_CYD_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 10,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 50
+          },
+          {
+            "rank": 11,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 45
+          },
+          {
+            "rank": 12,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 40
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    },
+    {
+      "customer_id": "C104",
+      "validation_target": {
+        "product_id": "XYCF_CREDIT_XYXFD_SZ",
+        "bank_name": "兴业消费金融",
+        "product_name": "家庭综合消费贷",
+        "approved_amount": 200000,
+        "annual_rate": 0.11199999999999999,
+        "repayment_method": "等额本息",
+        "source_bank_name": "兴业消费金融"
+      },
+      "status": "completed",
+      "target_retained": true,
+      "hard_filter": {
+        "candidate_count": 9,
+        "excluded_count": 3,
+        "target_exclusion": null
+      },
+      "elapsed_seconds": 81.306,
+      "top1_hit": true,
+      "top3_hit": true,
+      "target_rank": 1,
+      "response": {
+        "id": "resp_a8204961-70af-9003-934f-01443c4c1fdb",
+        "model": "qwen3.7-max",
+        "status": "completed",
+        "usage": {
+          "input_tokens": 7249,
+          "input_tokens_details": {
+            "cached_tokens": 0
+          },
+          "output_tokens": 6179,
+          "output_tokens_details": {
+            "reasoning_tokens": 4817
+          },
+          "total_tokens": 13428,
+          "x_details": [
+            {
+              "input_tokens": 7249,
+              "output_tokens": 6179,
+              "output_tokens_details": {
+                "reasoning_tokens": 4817
+              },
+              "prompt_tokens_details": {
+                "cached_tokens": 0
+              },
+              "total_tokens": 13428,
+              "x_billing_type": "response_api"
+            }
+          ]
+        }
+      },
+      "recommendation": {
+        "customer_id": "C104",
+        "ranked_product_count": 9,
+        "top3": [
+          {
+            "rank": 1,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "bank_name": "兴业消费金融",
+            "product_name": "家庭综合消费贷",
+            "match_score": 95,
+            "confidence": "high",
+            "amount_range": "最高200000元",
+            "annual_rate_range": "7.2% - 22.8%",
+            "term_months_max": 48,
+            "reasons": [
+              "客户优先级为“放款速度”且要求“立刻”，消费金融公司通常审批和放款速度最快，高度契合客户核心诉求。",
+              "客户为25岁本科学历，月入12k-20k打卡工资，完美匹配该产品客群3（本科及以上、月收入≥5000）及备注中的年龄和学历优选条件。",
+              "产品最高额度20万，能够覆盖客户申请区间（11-30万）的下半部分，满足基本资金需求。"
+            ],
+            "missing_information": [
+              "客户现单位在职时长为0-1年，需确认是否已满6个月以满足该产品基本准入要求。",
+              "客户申请额度上限为30万，该产品最高额度仅20万，需确认客户是否接受额度部分覆盖。"
+            ]
+          },
+          {
+            "rank": 2,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "bank_name": "中国建设银行",
+            "product_name": "快贷",
+            "match_score": 85,
+            "confidence": "medium",
+            "amount_range": "最高300000元",
+            "annual_rate_range": "3.0% - 6.85%",
+            "term_months_max": 36,
+            "reasons": [
+              "产品最高额度30万，完整覆盖客户11-30万的申请额度区间，且利率区间（3.0%-6.85%）远低于消费金融产品。",
+              "客户有公积金和社保，该产品客群4/5仅要求连续缴存6个月及在职满6个月，客户0-1年的在职和社保时长有较大概率满足准入。",
+              "支持随借随还等多种还款方式，且建行快贷系统自动化程度高，放款速度在银行系中相对较快。"
+            ],
+            "missing_information": [
+              "客户公积金和社保具体缴存月数缺失，需确认是否已连续缴存满6个月。",
+              "客户近1个月贷款查询次数达15次，需确认是否超出该行系统自动审批的查询次数容忍度，以免影响“立刻”放款的诉求。"
+            ]
+          },
+          {
+            "rank": 3,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "bank_name": "中国工商银行",
+            "product_name": "融e借",
+            "match_score": 80,
+            "confidence": "medium",
+            "amount_range": "最高1000000元",
+            "annual_rate_range": "3.0% - 6.0%",
+            "term_months_max": 84,
+            "reasons": [
+              "产品最高额度100万，最长期限84个月，额度与期限均能充分覆盖并超越客户需求，且最高年利率仅6.0%，资金成本较低。",
+              "客户拥有4张活跃信用卡，若其中包含工行信用卡，则可直接通过客群3（工行信用卡活跃客户）准入，无需考核公积金和在职时长，且放款极快。",
+              "若走客群5（公积金缴存），则要求连续12个月，客户0-1年社保/公积金时长存在一定不确定性，但整体产品竞争力强。"
+            ],
+            "missing_information": [
+              "客户信用卡发卡行信息缺失，需确认4张活跃信用卡中是否包含工商银行信用卡以适用客群3。",
+              "客户公积金具体缴存月数缺失，若不满足工行信用卡客群，需确认公积金是否连续缴存满12个月以适用客群5。"
+            ]
+          }
+        ],
+        "rankings": [
+          {
+            "rank": 1,
+            "product_id": "XYCF_CREDIT_XYXFD_SZ",
+            "match_score": 95
+          },
+          {
+            "rank": 2,
+            "product_id": "CCB_CREDIT_KD_SZ",
+            "match_score": 85
+          },
+          {
+            "rank": 3,
+            "product_id": "ICBC_CREDIT_REJ_SZ",
+            "match_score": 80
+          },
+          {
+            "rank": 4,
+            "product_id": "SPDB_CREDIT_PSD_SZ",
+            "match_score": 75
+          },
+          {
+            "rank": 5,
+            "product_id": "BOC_CREDIT_ZYED_SZ",
+            "match_score": 70
+          },
+          {
+            "rank": 6,
+            "product_id": "NJCB_CREDIT_NHED_SZ",
+            "match_score": 65
+          },
+          {
+            "rank": 7,
+            "product_id": "PSBC_CREDIT_YXD_SZ",
+            "match_score": 60
+          },
+          {
+            "rank": 8,
+            "product_id": "BOS_CREDIT_SNED_SZ",
+            "match_score": 55
+          },
+          {
+            "rank": 9,
+            "product_id": "CCB_CREDIT_JYD_SZ",
+            "match_score": 50
+          }
+        ],
+        "disclaimer": "本结果仅用于产品初步匹配，最终额度、利率及审批结果以金融机构审核为准。"
+      }
+    }
+  ]
+}
