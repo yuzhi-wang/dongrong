@@ -26,11 +26,13 @@ from report_comparison import (
     print_comparison, validate_report,
 )
 from hard_filter import filter_products
+from html_report import save_html_report
 from recommendation import (
     API_BASE_URL,
     MODEL,
     PRODUCTS_PATH,
     SYSTEM_PROMPT_PATH,
+    USER_PROMPT_PATH,
     TIMEOUT_SECONDS,
     build_user_prompt,
     load_json,
@@ -400,6 +402,7 @@ def main(argv: list[str] | None = None, *, default_all=False,
             customer_ids=args.customer_id,
         )
         catalog = load_json(PRODUCTS_PATH)
+        customer_document = load_json(VALIDATABLE_CASES_PATH)
         system_prompt = SYSTEM_PROMPT_PATH.read_text(encoding="utf-8")
         baseline = load_json(args.baseline) if args.baseline else None
         prompt_baseline = (
@@ -414,11 +417,14 @@ def main(argv: list[str] | None = None, *, default_all=False,
             if baseline_check["status"] != "comparable":
                 raise ValueError("基线不可用：" + "；".join(baseline_check["reasons"]))
         output_path = (args.output or _default_output_path(args.dry_run)).resolve()
+        if output_path.suffix.lower() != ".json":
+            raise ValueError("--output 请指定 .json 文件；同名 .html 报告会自动生成")
         comparison_path = output_path.with_name(output_path.stem + "_comparison.json")
+        html_path = output_path.with_suffix(".html")
         raw_response_dir = output_path.with_name(output_path.stem + "_raw")
-        if args.baseline and args.baseline.resolve() in {output_path, comparison_path}:
+        if args.baseline and args.baseline.resolve() in {output_path, comparison_path, html_path}:
             raise ValueError("输出路径不能覆盖历史基线")
-        if DEFAULT_PROMPT_BASELINE_PATH.resolve() in {output_path, comparison_path}:
+        if DEFAULT_PROMPT_BASELINE_PATH.resolve() in {output_path, comparison_path, html_path}:
             raise ValueError("输出路径不能覆盖提示词实验基线")
     except (OSError, ValueError) as exc:
         print(f"测试准备失败：{exc}", file=sys.stderr)
@@ -429,6 +435,16 @@ def main(argv: list[str] | None = None, *, default_all=False,
             "started_at": datetime.now().astimezone().isoformat(timespec="seconds"),
             "mode": "dry_run" if args.dry_run else "real",
             "source_group": "validatable",
+            "data_sources": {
+                "customers_path": str(VALIDATABLE_CASES_PATH),
+                "customers_origin": customer_document.get("source"),
+                "available_customer_count": len(cases),
+                "products_path": str(PRODUCTS_PATH),
+                "products_origin": catalog.get("source"),
+                "product_count": len(catalog.get("products", [])),
+                "system_prompt_path": str(SYSTEM_PROMPT_PATH),
+                "user_prompt_path": str(USER_PROMPT_PATH),
+            },
             "selection": (
                 "explicit_customer_ids"
                 if args.customer_id
@@ -496,6 +512,7 @@ def main(argv: list[str] | None = None, *, default_all=False,
     save_report(report, output_path)
     print(json.dumps(report["summary"], ensure_ascii=False, indent=2))
 
+    comparison = None
     if baseline is not None:
         comparison = compare_reports(baseline, report)
         if prompt_baseline is not None:
@@ -506,6 +523,10 @@ def main(argv: list[str] | None = None, *, default_all=False,
         save_report(comparison, comparison_path)
         print_comparison(comparison)
         print(f"比较报告：{comparison_path}")
+
+    save_html_report(report, html_path, result_path=output_path,
+                     cases=selected, catalog=catalog, comparison=comparison)
+    print(f"HTML 报告：{html_path}")
 
     # 批量测试允许个别业务失败并完整保存报告；仅准备失败时返回非零。
     return 0
